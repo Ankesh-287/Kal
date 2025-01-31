@@ -1,14 +1,22 @@
 import React from 'react'
-import {Box, Typography} from '@mui/material'
+import { Box, Typography } from '@mui/material'
 
-const Items = ["BUY T-SHIRTS", "WOMEN", "MEN", "ABOUT", "CONTACT"]
+const Items = [
+    { link: "Buy T-Shirts", path: 'products' },
+    { link: "Women", path: 'women' },
+    { link: "Men", path: 'men' },
+    { link: "About", path: 'about' },
+    { link: "Contact", path: 'contact' },
+];
 
 function NavItems() {
     return (
         <Box sx={{ display: "flex", gap: 3 }}>
             {Items.map((item) => (
-                <Typography key={item} sx={{ color: "white", cursor: "pointer", "&:hover": { color: "#ccc" } }}>
-                    {item}
+                <Typography key={item}
+                    to={item.path}
+                    sx={{ cursor: "pointer" }}>
+                    {item.link}
                 </Typography>
             ))}
         </Box>

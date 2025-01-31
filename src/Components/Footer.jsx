@@ -12,42 +12,45 @@ const Items = [
 
 function Footer() {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        gap: 3,
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'column',
-        backgroundColor: '#faedeb',
-        width: '100%',
-        padding: 2,
-      }}
-    >
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          flexDirection: 'column',
-          textAlign: 'center',
-        }}
-      >
-        <Typography variant="body1">Subscribe To Get Offers In Your Inbox</Typography>
-        <Typography variant="body2">
-          Lorem ipsum dolor sit amet, adipiscing elit sed do eiusmod condimentum
-        </Typography>
-      </Box>
-      <Box sx={{ display: "flex", gap: 3 }}>
-        {Items.map((item) => (
-          <Link key={item.path} to={item.path} style={{ textDecoration: 'none' }}>
-            <Typography sx={{ color: 'grey.700', cursor: "pointer", "&:hover": { color: "grey.900" } }}>
-              {item.link}
+    <>
+        <Box
+          sx={{
+            display: 'flex',
+            gap: 3,
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column',
+            backgroundColor: '#faedeb',
+            width: '100%',
+            padding: 2,
+            bottom:0,
+          }}
+        >
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              flexDirection: 'column',
+              textAlign: 'center',
+            }}
+          >
+            <Typography variant="body1">Subscribe To Get Offers In Your Inbox</Typography>
+            <Typography variant="body2">
+              Lorem ipsum dolor sit amet, adipiscing elit sed do eiusmod condimentum
             </Typography>
-          </Link>
-        ))}
-      </Box>
-    </Box>
+          </Box>
+          <Box sx={{ display: "flex", gap: 3 }}>
+            {Items.map((item) => (
+              <Link key={item.path} to={item.path} style={{ textDecoration: 'none' }}>
+                <Typography sx={{ color: 'grey.700', cursor: "pointer", "&:hover": { color: "grey.900" } }}>
+                  {item.link}
+                </Typography>
+              </Link>
+            ))}
+          </Box>
+        </Box>
+    </>
   );
 }
 
