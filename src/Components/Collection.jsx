@@ -6,10 +6,10 @@ function Collection() {
         <>
             <Grid container spacing={3} justifyContent="center"
                 sx={{
-                    width: {md:'100%', lg:"80%"},
+                    width: {xs:'100%', md:'100%', lg:"80%"},
                     m: 'auto',
                     display:'flex',
-                    justifyContent:'space-around'
+                    justifyContent:'space-around',
                 }}>
                 <Grid item xs={12} md={6} lg={6} >
                     <Grid>
@@ -39,7 +39,6 @@ function Collection() {
                             sx={{
                                 mt: { xs: 0, sm: 2, md: 2, lg: 7, },
                                 textAlign: 'center',
-                                // width: '100%',
                                 mt: '20px',
                                 marginY: '20px',
                                 fontWeight: 'bold',

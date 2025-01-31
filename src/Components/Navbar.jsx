@@ -19,7 +19,6 @@ const Navbar = () => {
           color: theme.palette.text.secondary,
           position: 'relative',
           boxSizing:'border-box'
-
         }}>
         <Toolbar gap={3} sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <NavItems />
