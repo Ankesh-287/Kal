@@ -16,7 +16,7 @@ const Navbar = () => {
       <AppBar position="static"
         sx={{
           backgroundColor: theme.palette.background.paper,
-          color: theme.palette.text.secondary,
+          color: theme.palette.text.primary,
           position: 'relative',
           boxSizing:'border-box'
         }}>

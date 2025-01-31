@@ -1,7 +1,7 @@
-import React from 'react'
-import { Box, Typography, useMediaQuery } from '@mui/material'
+import React, { useState } from 'react';
+import { Box, Typography, useMediaQuery, IconButton } from '@mui/material';
 import { MenuOutlined } from '@mui/icons-material';
-import Sidebar from './Sidebar.jsx'
+import Sidebar from './Sidebar.jsx';
 
 const Items = [
     { link: "Buy T-Shirts", path: 'products' },
@@ -13,31 +13,30 @@ const Items = [
 
 function NavItems() {
     const isLargeScreen = useMediaQuery('(min-width:766px)');
-    const isMediumScreen = useMediaQuery('(max-width:765px)');
+    const [open, setOpen] = useState(false);
 
     const handleSidebar = () => {
+        setOpen(true); 
+    };
 
-    }
     return (
         <>
             {isLargeScreen ? (
-                <>
-                    <Box sx={{ display: "flex", gap: 3 }}>
-                        {Items.map((item) => (
-                            <Typography key={item}
-                                to={item.path}
-                                sx={{ cursor: "pointer" }}>
-                                {item.link}
-                            </Typography>
-                        ))}
-                    </Box>
-                </>
+                <Box sx={{ display: "flex", gap: 3 }}>
+                    {Items.map((item) => (
+                        <Typography key={item.link} sx={{ cursor: "pointer" }}>
+                            {item.link}
+                        </Typography>
+                    ))}
+                </Box>
             ) : (
-                <MenuOutlined onClick={handleSidebar()} />
+                <IconButton onClick={handleSidebar}>
+                    <MenuOutlined />
+                </IconButton>
             )}
-            <Sidebar />
+            <Sidebar open={open} setOpen={setOpen} />
         </>
-    )
+    );
 }
 
-export default NavItems
+export default NavItems;
