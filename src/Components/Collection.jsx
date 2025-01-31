@@ -1,7 +1,9 @@
+import { useTheme } from "@mui/material/styles";
 import React from 'react'
-import { Grid, Typography } from '@mui/material'
+import { Grid, Typography, Button } from '@mui/material'
 
 function Collection() {
+    const theme = useTheme();
     return (
         <>
             <Grid container spacing={3} justifyContent="center"
@@ -10,7 +12,6 @@ function Collection() {
                     m: 'auto',
                     display: 'flex',
                     justifyContent: 'space-around',
-
                 }}>
                 <Grid item xs={12} sm={6} md={6} lg={6} >
                     <Grid>
@@ -25,30 +26,12 @@ function Collection() {
                             paddingX: 3,
                             alignItems: 'center',
                             flexDirection: 'column',
+                            textAlign:'center'
                         }}
                     >
-                        <Typography variant="h3" color="initial"
-                            sx={{
-                                mt: { xs: 2, sm: 2, md: 2, lg: 2, },
-                                textAlign: { xs: 'center', sm: 'left' },
-                                fontSize: '12px',
-                            }}
-                        >Men</Typography>
-                        <Typography variant="h3" color="initial"
-                            sx={{
-                                mt: { xs: 0, sm: 2, md: 2, lg: 2, },
-                                textAlign: 'center',
-                                marginY: '20px',
-                                fontWeight: 'bold',
-                                fontSize: { xs: '27px', sm: '35px', md: '44px', lg: '40px' },
-                            }}
-                        >The base collection - Ideal every day.</Typography>
-                        <button
-                            style={{
-                                padding: 10,
-                                border: 'none'
-                            }}
-                        >Shop Now</button>
+                        <Typography variant="h3" sx={{ fontSize: '12px' }}>Men</Typography>
+                        <Typography variant="h3" sx={{ fontSize: '2rem', marginY: '20px', fontWeight: 'bold', }} > The base collection - Ideal every day.</Typography>
+                        <Button sx={{ padding: 10, border: 'none',  color:theme.palette.background.paper}} > Shop Now </Button>
                     </Grid>
                 </Grid>
                 <Grid item xs={12} sm={6} md={6} lg={6} >

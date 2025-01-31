@@ -16,8 +16,6 @@ function Homepage() {
       width:'100%',
       boxSizing:'border-box',
       p:2,
-      color: theme.palette.text.primary,
-
     }}
     >
         <Hero />

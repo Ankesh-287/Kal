@@ -33,9 +33,9 @@ const Navbar = () => {
                 {mode === "dark" ? <Brightness7 /> : <Brightness4 />}
               </IconButton>
             </Box>
-            <Link to="/login" style={{ textDecoration: "none" }}>
-              <Typography sx={{ color: "white", cursor: "pointer", "&:hover": { color: "#ccc" } }}>Login</Typography>
-            </Link>
+            {/* <Link to="/login" style={{ textDecoration: "none" }}> */}
+              <Typography sx={{ cursor: "pointer", "&:hover": { color: "#ccc" } }}>Login</Typography>
+            {/* </Link> */}
           </Box>
         </Toolbar>
       </AppBar>

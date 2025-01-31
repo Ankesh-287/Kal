@@ -4,7 +4,7 @@ import { ShoppingCart } from "@mui/icons-material";
 
 function Cart() {
     return (
-        <IconButton sx={{ color: "white" }}>
+        <IconButton >
             <ShoppingCart />
         </IconButton>
     )
