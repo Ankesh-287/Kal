@@ -3,6 +3,7 @@ import { useTheme } from "@mui/material/styles";
 import { Box } from '@mui/material'
 import Hero from '../Components/Hero'
 import Collection from '../Components/Collection.jsx'
+import ProductDetail from '../Components/ProductDetail.jsx'
 
 function Homepage() {
   const theme = useTheme();
@@ -18,6 +19,7 @@ function Homepage() {
       p:2,
     }}
     >
+      <ProductDetail />
         <Hero />
         <Collection />
     </Box>

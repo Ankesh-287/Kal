@@ -21,6 +21,8 @@ const ThemeProviderComponent = ({ children }) => {
                 background: {
                   default: "#ffffff",
                   paper: "#f5f5f5",
+                  button: '#000000',
+                  buttonColor: '#ffffff'
                 },
                 text: {
                   primary: "#000000",
@@ -31,6 +33,8 @@ const ThemeProviderComponent = ({ children }) => {
                 background: {
                   default: "#121212",
                   paper: "#1e1e1e",
+                  button: '#ffffff',
+                  buttonColor:'#000000'
                 },
                 text: {
                   primary: "#ffffff",

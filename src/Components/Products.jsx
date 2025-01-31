@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Grid, Box } from '@mui/material'
 import Product from './Product.jsx'
+import Heading1 from './Heading1.jsx'
 import Heading from './Heading.jsx'
 
 
@@ -28,6 +29,7 @@ function Products() {
                     }}
                 >
                     <Grid item xs={12} lg={12} >
+                        <Heading1 title="Shop Collection" />
                         <Heading title="Popular T-Shirts" />
                     </Grid>
                     {products.map((product) => (
