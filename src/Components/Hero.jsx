@@ -24,7 +24,7 @@ function Hero() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-evenly',
-          alignItems: { xs: "center", sm: 'left',  },
+          alignItems: { xs: "center", sm: 'left', },
           width: '100%',
           textAlign: { xs: 'center', sm: 'left' },
         }}>
@@ -35,13 +35,16 @@ function Hero() {
               }}
             >Women</Typography>
           </Box>
-          <Typography variant="h3" color="initial"
-            sx={{
-              marginY: '20px',
-              fontWeight: 'bold',
-              fontSize: { xs: '27px', sm: '35px', md: '44px', lg: '54px' },
-            }}
-          >Slick. Modern. Awesome.</Typography>
+          <Box sx={{ width: '100%', alignItems: 'left' }}>
+            <Typography variant="h3" color="initial"
+              sx={{
+                marginY: '20px',
+                fontWeight: 'bold',
+                fontSize: { xs: '27px', sm: '35px', md: '44px', lg: '54px' },
+                textAlign: { xs: 'center', sm: 'left' },
+              }}
+            >Slick. Modern. Awesome.</Typography>
+          </Box>
           <Box sx={{ width: '100%', alignItems: 'left' }}>
             <button
               style={{

@@ -8,6 +8,7 @@ import Contact from './pages/Contact.jsx'
 import About from './pages/About'
 import Login from './pages/Login.jsx';
 import Cart from './Components/Cart.jsx';
+import ProductDetail from "./Components/ProductDetail.jsx";
 import './App.css'
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/product-category/category" element={<Category />} />
+          <Route path="/product-detail" element={<ProductDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>

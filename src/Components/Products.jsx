@@ -35,7 +35,7 @@ function Products() {
                     }}
                 >
                     <Grid item xs={12} lg={12} >
-                        <Heading1 title="Shop Collection" />
+                        <Heading1 title="Summer Collection" />
                         <Heading title="Popular T-Shirts" />
                     </Grid>
                     {products.map((product) => (
