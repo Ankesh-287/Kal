@@ -10,37 +10,70 @@ const ThemeProviderComponent = ({ children }) => {
   const toggleTheme = () => {
     setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
   };
- 
+
   const theme = useMemo(
     () =>
       createTheme({
         palette: {
           mode,
-          ...(mode === "light"
-            ? {
-                background: {
-                  default: "#ffffff",
-                  paper: "#f5f5f5",
-                  button: '#000000',
-                  buttonColor: '#ffffff'
+          primary: {
+            main: mode === "light" ? "#1976d2" : "#90caf9",
+          },
+          secondary: {
+            main: mode === "light" ? "#dc004e" : "#f48fb1",
+          },
+          background: {
+            default: mode === "light" ? "#ffffff" : "#121212",
+            paper: mode === "light" ? "#ffffff" : "#1e1e1e",
+          },
+          text: {
+            primary: mode === "light" ? "#000000" : "#ffffff",
+            secondary: mode === "light" ? "#505455" : "#bbbbbb",
+          },
+          divider: mode === "light" ? "#e0e0e0" : "#404040",
+        },
+        typography: {
+          fontFamily: "Roboto, Arial, sans-serif",
+          h1: { fontSize: "2rem", fontWeight: "bold" },
+          h2: { fontSize: "1.8rem", fontWeight: "bold" },
+          body1: { fontSize: "1rem" },
+          button: { textTransform: "none", fontWeight: "bold" },
+        },
+        components: {
+          MuiTextField: {
+            styleOverrides: {
+              root: {
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: 0,
+                  '& fieldset': {
+                    borderColor: '#ccc',
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#000', 
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#000', 
+                  },
                 },
-                text: {
-                  primary: "#000000",
-                  secondary: "#505455",
+              },
+            },
+          },
+        },
+        components: {
+          MuiButton: {
+            styleOverrides: {
+              root: {
+                borderRadius: "0px",
+                padding: "10px 20px",
+                textTransform: "none",
+                backgroundColor: mode === "light" ? "#000000" : "#ffffff",
+                color: mode === "light" ? "#ffffff" : "#000000",
+                "&:hover": {
+                  backgroundColor: mode === "light" ? "#333333" : "#dddddd",
                 },
-              }
-            : {
-                background: {
-                  default: "#121212",
-                  paper: "#1e1e1e",
-                  button: '#ffffff',
-                  buttonColor:'#000000'
-                },
-                text: {
-                  primary: "#ffffff",
-                  secondary: "#bbbbbb",
-                },
-              }),
+              },
+            },
+          },
         },
       }),
     [mode]

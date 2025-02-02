@@ -4,7 +4,8 @@ import Hero from '../Components/Hero'
 import Collection from '../Components/Collection.jsx'
 import Ads from '../Components/Ads.jsx';
 import Frame from '../Components/Frame.jsx';
-// import ProductDetail from '../Components/ProductDetail.jsx'
+import Product from '../data/Product.jsx';
+import ProductDetail from '../Components/ProductDetail.jsx'
 
 function Homepage() {
   return (
@@ -19,11 +20,12 @@ function Homepage() {
         p: 2,
       }}
     >
-      {/* <ProductDetail /> */}
+      <ProductDetail />
       <Hero />
       <Collection />
       <Ads />
       <Frame />
+      <Product />
     </Box>
   )
 }
