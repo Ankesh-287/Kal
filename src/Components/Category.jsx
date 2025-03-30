@@ -11,7 +11,7 @@ import productsData from "../data/data";
 const Category = () => {
   const drawerWidth = 260;
   const navigate = useNavigate();
-  const { category } = useParams();
+  const { category, subcategory  } = useParams();
   const categoryData = productsData[category] || {};
   const subcategories = Object.keys(categoryData);
 
@@ -38,7 +38,7 @@ const Category = () => {
     navigate(`/product-category/${parentCategory}/${subcategory}`);
   };
 
-  const products = categoryData[selectedSubcategory] || [];
+  const products = subcategory ? categoryData[subcategory] || [] : [];
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
