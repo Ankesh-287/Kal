@@ -13,6 +13,7 @@ const Category = () => {
   const navigate = useNavigate();
   const { category, subcategory  } = useParams();
   const categoryData = productsData[category] || {};
+  const products = subcategory ? categoryData[subcategory] || [] : [];
   const subcategories = Object.keys(categoryData);
 
   const [selectedSubcategory, setSelectedSubcategory] = useState("");
@@ -38,7 +39,6 @@ const Category = () => {
     navigate(`/product-category/${parentCategory}/${subcategory}`);
   };
 
-  const products = subcategory ? categoryData[subcategory] || [] : [];
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
