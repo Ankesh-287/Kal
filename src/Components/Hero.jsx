@@ -52,8 +52,7 @@ function Hero() {
                 color: 'white',
                 padding: 10,
                 border: 'none',
-              }}
-            >Shop Collection</button>
+              }}> Shop Collection </button>
           </Box>
         </Box>
 

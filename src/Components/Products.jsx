@@ -11,12 +11,12 @@ function Products() {
         { id: 2, type: "WOMEN", name: "Product 2", price: 20, image:'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-06-a-400x488.jpg' },
         { id: 3, type: "MEN", name: "Product 3", price: 30, image:'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-10-a-400x488.jpg' },
         { id: 4, type: "WOMEN", name: "Product 4", price: 50, image: 'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-08-a-400x488.jpg'},
-        { id: 4, type: "WOMEN", name: "Product 4", price: 50, image: 'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-01-a-400x488.jpg'},
-        { id: 4, type: "WOMEN", name: "Product 4", price: 50, image: 'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-02-a-400x488.jpg'},
-        { id: 4, type: "WOMEN", name: "Product 4", price: 50, image: 'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-07-a-400x488.jpg'},
-        { id: 4, type: "WOMEN", name: "Product 4", price: 50, image: 'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-04-a-400x488.jpg'},
-        { id: 4, type: "WOMEN", name: "Product 4", price: 50, image: 'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-03-a-400x488.jpg'},
-        { id: 4, type: "WOMEN", name: "Product 4", price: 50, image: 'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-05-a-400x488.jpg'},
+        { id: 5, type: "WOMEN", name: "Product 4", price: 50, image: 'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-01-a-400x488.jpg'},
+        { id: 6, type: "WOMEN", name: "Product 4", price: 50, image: 'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-02-a-400x488.jpg'},
+        { id: 7, type: "WOMEN", name: "Product 4", price: 50, image: 'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-07-a-400x488.jpg'},
+        { id: 8, type: "WOMEN", name: "Product 4", price: 50, image: 'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-04-a-400x488.jpg'},
+        { id: 9, type: "WOMEN", name: "Product 4", price: 50, image: 'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-03-a-400x488.jpg'},
+        { id: 10, type: "WOMEN", name: "Product 4", price: 50, image: 'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-05-a-400x488.jpg'},
 
     ])
     return (
@@ -38,7 +38,7 @@ function Products() {
                         <Heading1 title="Summer Collection" />
                         <Heading title="Popular T-Shirts" />
                     </Grid>
-                    {products.map((product) => (
+                    {products.slice(0, 8).map((product) => (
                         <Grid item key={product.id} xs={6} sm={4} md={3} lg={3} >
                             <Product image={product.image} type={product.type} name={product.name} price={product.price} />
                         </Grid>

@@ -30,6 +30,7 @@ function Footer() {
         <Box
           sx={{
             textAlign: 'center',
+            zIndex: (theme) => theme.zIndex.drawer + 1
           }}
         >
           <Typography variant="h6">Subscribe To Get Offers In Your Inbox</Typography>

@@ -5,8 +5,8 @@ import { Search } from "@mui/icons-material";
 import { ThemeContext } from "../ThemeContext";
 
 function SearchBar() {
-    const isLargeScreen = useMediaQuery('(min-width:900px)');
-    const isMediumScreen = useMediaQuery('(max-width:899px)');
+    const isLargeScreen = useMediaQuery('(min-width:1100px)');
+    const isMediumScreen = useMediaQuery('(max-width:1099px)');
       const theme = useTheme();
 
     return (

@@ -13,6 +13,7 @@ function Collection() {
                     display: 'flex',
                     justifyContent: 'space-around',
                 }}>
+                    
                 <Grid item xs={12} sm={6} md={6} lg={6} >
                     <Grid>
                         <img src="https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/collection-02.jpg" alt="" style={{ width: '100%' }} />

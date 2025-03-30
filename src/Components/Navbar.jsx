@@ -18,7 +18,12 @@ const Navbar = () => {
           backgroundColor: theme.palette.background.paper,
           color: theme.palette.text.primary,
           position: 'relative',
-          boxSizing:'border-box'
+          display:'flex',
+          justifyContent:'center',
+          minHeight: {xs:'80px', sm:'120px'},
+          height:'15%',
+          boxSizing:'border-box',
+          zIndex: (theme) => theme.zIndex.drawer + 1
         }}>
         <Toolbar gap={3} sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <NavItems />

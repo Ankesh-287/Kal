@@ -34,11 +34,14 @@ const ThemeProviderComponent = ({ children }) => {
         },
         typography: {
           fontFamily: "Roboto, Arial, sans-serif",
-          h1: { fontSize: "2rem", fontWeight: "bold" },
-          h2: { fontSize: "1.8rem", fontWeight: "bold" },
+          h1: { fontSize: { xs: '30px', sm: '38px', md: '40px', lg: '44px' }, fontWeight: "bold" },
+          h2: { fontSize: "2.5rem", fontWeight: "bold" },
           body1: { fontSize: "1rem" },
           button: { textTransform: "none", fontWeight: "bold" },
         },
+        // components: {
+          
+        // },
         components: {
           MuiTextField: {
             styleOverrides: {
@@ -58,8 +61,6 @@ const ThemeProviderComponent = ({ children }) => {
               },
             },
           },
-        },
-        components: {
           MuiButton: {
             styleOverrides: {
               root: {

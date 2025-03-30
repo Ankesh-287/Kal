@@ -21,49 +21,50 @@ function Form() {
     return (
         <Box
             sx={{
-                width: { xs: '100%', md: '100%', lg: "80%" },
+                width: { xs: '90%', sm: '95%', md: '95%', lg: "80%" },
                 m: 'auto',
                 display: 'flex',
-                flexWrap: 'wrap',
+                flexWrap: { xs: 'wrap', sm: 'nowrap', md: 'wrap', lg: 'wrap' },
                 flexDirection: { xs: 'column-reverse', sm: 'row' },
                 justifyContent: 'center',
-                p: 3
-            }}>
-
-            {/* Contact Info Section */}
-            <Box sx={{
-                width: { xs: '100%', md: '40%' },
-                position: 'relative',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                ml: { sm: '50px' },
-                pr: { sm: '0px', md: '50px' },
-                mb: { xs: 4, md: 0 }
+                position:'relative',
+                paddingY: 3
             }}>
                 <Box
                     sx={{
                         position: "absolute",
-                        bottom: {xs:0, sm:-60, md:-60, lg:-60 },
-                        left: -150,
-                        width: {xs:'100%', md:"170%"},
-                        height: {xs:"240%", sm:"300%", md:'110%', lg:'120%'},
-                        backgroundColor: "#f3f6f3",
-                        zIndex: -10
+                        bottom: { xs: 0, sm: '-15px' },
+                        left: {sm:0, lg: '-80px'},
+                        width: '60%',
+                        height: '105%',
+                        backgroundColor: "#faedeb",
+                        zIndex: -10,
                     }}
                 />
+
+            {/* Contact Info Section */}
+            <Box sx={{
+                width: { xs: '100%', sm: '100%', md: '50%', lg: '50%' },
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                pr: { sm: '0px', md: '20px', lg: '100px' },
+            }}>
                 <Box sx={{
                     height: '60%',
-                    width: { sm: '80%', md: '100%' },
+                    width: { sm: '100%', md: '100%' },
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
                     pt: { xs: '50px', sm: 0 },
-                    mb: { xs: 4, md: 0 }
+                    mb: { xs: 4, md: 0 },
+                    pl: { sm: 4 },
+                    pr: { sm: 2 },
+                    textAlign: { xs: 'center', sm:'left' }
                 }}>
 
                     <Typography variant="h3" sx={{ fontSize: '38px', fontWeight: 'bold', color: theme.palette.text.primary }}> Get in touch </Typography>
-                    <Typography variant='body1' sx={{ mb: 2 }}>
+                    <Typography variant='body1' sx={{ marginY: 2 }}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id leo tempor, congue justo at, lobortis orci.
                     </Typography>
 
@@ -82,16 +83,16 @@ function Form() {
             </Box>
 
             <Box sx={{
-                backgroundColor:'white',
-                width: { xs: '100%', md: '50%' },
+                backgroundColor: 'white',
+                width: { xs: '100%', sm: '85%', md: '50%' },
                 display: 'flex',
                 flexDirection: 'column',
                 boxSizing: 'border-box',
-                p: { xs: 0, sm: 5 },
+                p: { xs: 5, sm: 5 },
                 boxShadow: '0px 20px 40px 0px rgba(123, 45.99999999999999, 45.99999999999999, 0.05)',
             }}>
                 <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6}>
+                    <Grid item xs={6} sm={6}>
                         <TextField
                             fullWidth
                             name="firstName"
@@ -100,7 +101,7 @@ function Form() {
                             onChange={handleData}
                         />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid item xs={6} sm={6} >
                         <TextField
                             fullWidth
                             name="lastName"

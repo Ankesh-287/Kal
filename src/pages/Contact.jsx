@@ -15,21 +15,22 @@ function Contact() {
       }}>
         <Box sx={{
           height: '150px',
-          mt: '40px',
+          mt: '60px',
           alignItems: 'center',
           flexDirection: 'column',
           justifyContent: 'space-around',
           display: 'flex',
-          flexDirection: 'column',
         }}>
-          <Typography variant='h2' sx={{ textAlign: 'center', fontWeight: 'bold' }}> Contact </Typography>
+          <Typography variant='h2' sx={{ textAlign: 'center', fontWeight: 'bold',
+            fontSize:{ xs: '30px', sm: '38px', md: '54px', lg: '54px' },
+           }}> Contact </Typography>
 
-          <Divider variant='' sx={{ width: '200px', height: '2px' }} />
+          <span style={{ width: '50px', height: '2px', backgroundColor:'black' }} />
 
-          <Typography variant='body1' sx={{ width: '60%', textAlign: 'center', fontWeight: 'bold' }}> Proin eu ante vel mauris molestie dignissim non eget nunc. Integer ac massa orci. Suspendisse vulputate semper nunc eget rhoncus. </Typography>
+          <Typography variant='body1' sx={{ width: {xs:'90%', sm:'90%', md:'60%', lg:'`100%'}, textAlign: 'center', fontWeight: 'bold' }}> Proin eu ante vel mauris molestie dignissim non eget nunc. Integer ac massa orci. Suspendisse vulputate semper nunc eget rhoncus. </Typography>
         </Box>
 
-        <Box sx={{ padding: {xs:0, md:15} }}>
+        <Box sx={{ marginY:6 }}>
           <Form />
         </Box>
       </Box>

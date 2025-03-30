@@ -15,21 +15,44 @@ const App = () => {
   return (
     <ThemeProviderComponent>
       <Router>
+        
         <Navbar />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
-          <Route path="/product-category/:category" element={<Category />} />
+          <Route path="/product-category/:category/:subCategory" element={<Category />} />
           <Route path="/product-detail/:id" element={<ProductDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
+
         <Footer />
       </Router>
     </ThemeProviderComponent>
   );
 };
+
+
+// sx = {{
+//   '& label.Mui-focused': {
+//     color: '#A0AAB4',
+//                                         },
+//   '& .MuiInput-underline:after': {
+//     borderBottomColor: '#B2BAC2',
+//                                         },
+//   '& .MuiOutlinedInput-root': {
+//     '& fieldset': {
+//       borderColor: '#E0E3E7',
+//                                             },
+//     '&:hover fieldset': {
+//       borderColor: '#B2BAC2',
+//                                             },
+//     '&.Mui-focused fieldset': {
+//       borderColor: '#6F7E8C',
+//                                             },
+//   },
+// }}
 
 
 export default App

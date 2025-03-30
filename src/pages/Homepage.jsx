@@ -20,7 +20,7 @@ function Homepage() {
         p: 2,
       }}
     >
-      <ProductDetail />
+      {/* <ProductDetail /> */}
       <Hero />
       <Collection />
       <Ads />

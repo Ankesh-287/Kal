@@ -1,11 +1,14 @@
 import React from 'react'
-import {IconButton } from "@mui/material";
+import { IconButton, Badge } from "@mui/material";
 import { ShoppingCart } from "@mui/icons-material";
 
 function Cart() {
     return (
         <IconButton >
-            <ShoppingCart />
+            
+            <Badge badgeContent={4} >
+                <ShoppingCart />
+            </Badge>
         </IconButton>
     )
 }

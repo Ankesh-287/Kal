@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Box, Grid, Typography, Button, IconButton } from "@mui/material";
 import { Add, Remove } from "@mui/icons-material";
-import productsData from "../data/data"; // Import product data
+import productsData from "../data/data";
 
 const ProductDetail = () => {
   const { id } = useParams(); // Get product ID from URL
@@ -10,7 +10,19 @@ const ProductDetail = () => {
     .flat()
     .find((item) => item.id === parseInt(id)); // Find product by ID
 
+  const [cart, setCart] = useState([]);
   const [quantity, setQuantity] = useState(1);
+  const isInCart = cart.some((item) => item.id === product?.id);
+
+  const handleCart = (product) => {
+    setCart((prevCart) => {
+      if (isInCart) {
+        return prevCart.filter((item) => item.id !== product.id);
+      } else {
+        return [...prevCart, { ...product, quantity } ];
+      }
+    });
+  };
 
   if (!product) {
     return <Typography variant="h5">Product not found.</Typography>;
@@ -58,7 +70,8 @@ const ProductDetail = () => {
           </Box>
 
           {/* Add to Cart Button */}
-          <Button variant="contained" sx={{ mt: 2, backgroundColor: "black", color: "white" }}>
+          <Button variant="contained" sx={{ mt: 2, backgroundColor: "black", color: "white" }}
+            onClick={handleCart()}>
             Add to Cart
           </Button>
 
