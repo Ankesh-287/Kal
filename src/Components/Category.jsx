@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Grid, Typography, Toolbar, } from "@mui/material";
+import { Box, Grid, Typography, Toolbar, } from "@mui/material";
 import Drawbar from "./Drawbar";
 import BreadCrum from "./BreadCrum";
 import ProductGrid from "./ProductGrid";
@@ -38,8 +38,11 @@ const Category = () => {
 
   return (
     <>
+    <Box>
       <Grid container spacing={1}>
+        <Grid item lg={3} >
         <Drawbar productsData={productsData} openCategory={openCategory} handleCategoryClick={handleCategoryClick} handleSubCategoryChange={handleSubcategoryChange} selectedSubCategory={selectedSubcategory} />
+        </Grid>
         <Grid item lg={9} sx={{ p: 4 }}>
           <Toolbar />
           <BreadCrum openCategory={openCategory} selectedSubCategory={selectedSubcategory} />
@@ -49,6 +52,7 @@ const Category = () => {
           <ProductGrid products={categoryData[selectedSubcategory] || []} productsPerPage={productsPerPage} currentPage={currentPage} setCurrentPage={setCurrentPage} />
         </Grid>
       </Grid>
+    </Box>
     </>
   );
 };

@@ -1,25 +1,28 @@
 import React from 'react'
-import { Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Divider } from '@mui/material'
+import { Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 import { ExpandMore, ExpandLess, Inbox } from '@mui/icons-material'
 
-const Drawbar = ({ productsData, openCategory, handleCategoryClick, handleSubCategoryChange, selectedSubCategory })  => {
+const Drawbar = ({ productsData, openCategory, handleCategoryClick, handleSubCategoryChange, selectedSubCategory }) => {
     return (
         <>
+
             <Drawer
                 variant="permanent"
                 anchor="left"
                 sx={{
+                    height:'100%',
+                    zIndex: (theme) => theme.zIndex.drawer - 1,
                     width: 260,
-                    flexShrink: 0,
                     "& .MuiDrawer-paper": {
+                        position: 'absolute',
+                        top: '120px',
+                        bottom: '-56px',
                         width: 260,
                         boxSizing: "border-box",
                         backgroundColor: "#f8f9fa",
                     },
                 }}>
-                <Toolbar />
-                <Toolbar />
-                <List>
+                <List >
                     {Object.keys(productsData).map((mainCategory) => (
                         <React.Fragment key={mainCategory}>
                             <ListItem disablePadding>

@@ -13,7 +13,7 @@ const Navbar = () => {
   const theme = useTheme();
   return (
     <>
-      <AppBar position="static"
+      <AppBar position="fixed"
         sx={{
           backgroundColor: theme.palette.background.paper,
           color: theme.palette.text.primary,

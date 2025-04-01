@@ -9,11 +9,11 @@ function BreadCrum({ openCategory, selectedSubCategory }) {
                 <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
                     Home
                 </Link>
-                <Link to={`/product-category/${openCategory}`} style={{textDecoration:'none'}}>
-                {openCategory}
+                <Link to={`/product-category/${openCategory}`} style={{ textDecoration: 'none', color: "inherit" }}>
+                    {openCategory}
                 </Link>
                 {selectedSubCategory && (
-                    <Typography sx={{textTransform:'capitalize', fontWeight:'bold'}}>
+                    <Typography sx={{ textTransform: 'capitalize', fontWeight: 'bold' }}>
                         {selectedSubCategory}
                     </Typography>
                 )}

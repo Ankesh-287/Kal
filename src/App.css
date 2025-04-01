@@ -42,7 +42,9 @@
 } */
 
 body {
-  padding: 0;
+  /* padding: 0; */
+  padding-top: '400px';
   margin: 0;
   font-family: 'Poppins'
 }
+

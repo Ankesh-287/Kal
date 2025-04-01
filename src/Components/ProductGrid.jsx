@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Button, Card, CardContent, CardMedia, Grid, Pagination, Typography } from '@mui/material';
+import { Box, Button, Card, CardContent, CardMedia, Grid, Pagination, Typography } from '@mui/material';
 
 
 const ProductGrid = ({products, productsPerPage, currentPage, setCurrentPage}) => {
@@ -21,8 +21,8 @@ const ProductGrid = ({products, productsPerPage, currentPage, setCurrentPage}) =
                             <Typography variant='body2' color='text.secondary' sx={{mb:1}}> Rs {product.price}</Typography>
                             <Button variant='contained'
                             sx={{backgroundColor: 'black', color:'white', "&:hover":{backgroundColor:'#333'}
-                        }} onClick={() => navigate(`/product/${product.id}`)}
-                            >Add to Cart</Button>
+                        }} onClick={() => navigate(`/product-detail/${product.id}`)}
+                            > View Details</Button>
                         </CardContent>
                     </Card>
                 </Grid>

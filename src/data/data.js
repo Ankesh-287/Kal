@@ -1,16 +1,31 @@
 const productsData = {
   men: {
     shirts: [
-      { id: 1, name: 'Men T-Shirt', price: 20, image: 'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-09-a-400x488.jpg' },
+      {
+        id: 101,
+        name: 'Men T-Shirt',
+        price: 20,
+        image: 'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-09-a-400x488.jpg',
+        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dapibus interdum eros. In blandit velit a lacus laoreet dictum.'
+      },
+      { id: 102, name: 'Funky T-Shirt', price: 50, image: 'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-09-a-400x488.jpg' },
+      { id: 103, name: 'Lesso T-Shirt', price: 80, image: 'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-09-a-400x488.jpg' },
+      { id: 104, name: 'Denim T-Shirt', price: 200, image: 'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-09-a-400x488.jpg' },
     ],
     pants: [
-      { id: 2, name: 'Men Jeans', price: 40, image: 'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-10-a-400x488.jpg' },
+      { id: 201, name: 'Men Jeans', price: 40, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGZC8jYaIEF4XyP9561wQhjDBrcv7gebMG9g&s' },
     ],
     watches: [
-      { id: 3, name: 'Men Watch', price: 100, image: 'https://example.com/men-watch.jpg' },
+      { id: 202, name: 'Men Watch', price: 100, image: 'https://www.titan.co.in/dw/image/v2/BKDD_PRD/on/demandware.static/-/Sites-titan-master-catalog/default/dw19f3b313/images/Titan/Catalog/90177TM03_2.jpg?sw=600&sh=600' },
     ],
     glasses: [
-      { id: 4, name: 'Men Sunglasses', price: 50, image: 'https://example.com/men-glasses.jpg' },
+      {
+        id: 203,
+        name: 'Men Sunglasses',
+        price: 50,
+        image: 'https://vincerocollective.com/cdn/shop/products/VinceromatteBlackVIla_1024x1024.jpg?v=1709882336',
+        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dapibus interdum eros. In blandit velit a lacus laoreet dictum.'
+      },
     ],
   },
 
@@ -19,13 +34,13 @@ const productsData = {
       { id: 5, name: 'Women T-Shirt', price: 25, image: 'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-08-a-400x488.jpg' },
     ],
     pants: [
-      { id: 6, name: 'Women Jeans', price: 45, image: 'https://example.com/women-jeans.jpg' },
+      { id: 6, name: 'Women Jeans', price: 45, image: 'https://d1pdzcnm6xgxlz.cloudfront.net/bottoms/8905875192664-9.jpg' },
     ],
     handbags: [
-      { id: 7, name: 'Women Handbag', price: 60, image: 'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-06-a-400x488.jpg' },
+      { id: 7, name: 'Women Handbag', price: 60, image: 'https://rukminim2.flixcart.com/image/850/1000/xif0q/hand-messenger-bag/k/h/r/-original-imagrhgksuzv7xcg.jpeg?q=90&crop=false.jpg' },
     ],
     beauty: [
-      { id: 8, name: 'Shampoo', price: 15, image: 'https://example.com/shampoo.jpg' },
+      { id: 8, name: 'Shampoo', price: 15, image: 'https://olamor.in/cdn/shop/files/GlistenKeratinShampoo1L.jpg?v=1700474623&width=1500' },
     ],
   },
 

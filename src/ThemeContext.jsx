@@ -1,11 +1,18 @@
-import React, { createContext, useState, useMemo } from "react";
+import React, { createContext, useState, useMemo, useEffect } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
 export const ThemeContext = createContext();
 
 const ThemeProviderComponent = ({ children }) => {
-  const [mode, setMode] = useState("light");
+  // Load theme from localStorage or default to light mode
+  const storedTheme = localStorage.getItem("theme") || "light";
+  const [mode, setMode] = useState(storedTheme);
+
+  // Save theme to localStorage when it changes
+  useEffect(() => {
+    localStorage.setItem("theme", mode);
+  }, [mode]);
 
   const toggleTheme = () => {
     setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
@@ -39,9 +46,6 @@ const ThemeProviderComponent = ({ children }) => {
           body1: { fontSize: "1rem" },
           button: { textTransform: "none", fontWeight: "bold" },
         },
-        // components: {
-          
-        // },
         components: {
           MuiTextField: {
             styleOverrides: {
