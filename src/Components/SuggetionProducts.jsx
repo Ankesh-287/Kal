@@ -1,34 +1,40 @@
 import React from 'react'
-import { Box, Grid, Typography} from '@mui/material';
+import { Box, CardMedia, Grid, Typography } from '@mui/material';
+import productsData from "../data/data"
 
 const SuggetionProducts = () => {
-  return (
-    <>
-      <Typography variant="h5" sx={{ fontWeight: 'bold', mb: 3 }}>
-                    Related Products
-                </Typography>
+    const menProducts = Object.values(productsData.men).flat();
+    return (
 
-                <Grid container spacing={3}>
-                    {[1, 2, 3, 4].map((item) => (
-                        <Grid item xs={12} sm={6} md={3} key={item}>
-                            <Box sx={{ textAlign: 'center', p: 2, border: '1px solid grey', borderRadius: 2 }}>
-                                <img
-                                    src="https://via.placeholder.com/150"
-                                    alt="Product"
-                                    style={{ width: '100%', borderRadius: 5 }}
-                                />
-                                <Typography variant="h6" sx={{ mt: 1 }}>
-                                    T-Shirt Name {item}
-                                </Typography>
-                                <Typography variant="body2" sx={{ color: 'gray' }}>
-                                    $20.00 – $25.00
-                                </Typography>
-                            </Box>
-                        </Grid>
-                    ))}
-                </Grid>
-    </>
-  )
+        <>
+            <Typography variant="h5" sx={{ fontWeight: 'bold', mb: 3 }}>
+                Related Products
+            </Typography>
+
+            <Grid container spacing={2}>
+                {menProducts.slice(0, 4).map((item) => (
+                    <Grid item xs={6} sm={4} md={3} key={item.id}>
+                        <Box >
+                            <CardMedia component="img"
+                                image={item.image}
+                                alt="Product"
+                                sx={{ width: '100%', }}
+                            />
+                            <Typography variant="body1" sx={{ mt: 1, fontSize:'12px', color:'grey.500' }}>
+                                {item.type.toUpperCase()}
+                            </Typography>
+                            <Typography variant="body1" sx={{ fontWeight:'bold'}}>
+                                {item.name}
+                            </Typography>
+                            <Typography variant="subtitle2" sx={{ color: 'gray' }}>
+                                Rs. {item.price}
+                            </Typography>
+                        </Box>
+                    </Grid>
+                ))}
+            </Grid>
+        </>
+    )
 }
 
 export default SuggetionProducts

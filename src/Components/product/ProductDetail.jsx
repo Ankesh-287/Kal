@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ExpandBars from '../ExpandBars';
-import { Box, Grid, Typography, Divider } from '@mui/material';
+import { Box, Grid, Typography, Divider, CardMedia } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import productsData from '../../data/data';
 import SuggetionProducts from '../SuggetionProducts';
@@ -8,6 +8,7 @@ import ProductQuantity from './ProductQuantity';
 import ProductSize from './ProductSize';
 import ProductColor from './ProductColor';
 import CartPanel from '../cart/CartPanel';
+import { Search } from '@mui/icons-material';
 
 function ProductDetail() {
     const { id } = useParams();
@@ -32,8 +33,8 @@ function ProductDetail() {
 
         if (getProduct) {
             setProduct(getProduct);
-            setSelectedColor(getProduct.colors.length > 0 ? getProduct.colors[0] : null); 
-            setSelectedSize(getProduct.size.length > 0 ? getProduct.size[0] : null);  
+            setSelectedColor(getProduct.colors.length > 0 ? getProduct.colors[0] : null);
+            setSelectedSize(getProduct.size.length > 0 ? getProduct.size[0] : null);
         }
     }, [id]);
 
@@ -62,7 +63,6 @@ function ProductDetail() {
         }
         console.log(cartItems);
         setShowCart(true);
-        setTimeout(() => setShowCart(false), 10000);
 
         localStorage.setItem("cart", JSON.stringify(cartItems));
 
@@ -72,12 +72,41 @@ function ProductDetail() {
 
     return (
         <>
-            <Box sx={{ display: 'flex', flexDirection: 'column', width: { xs: '100%', lg: "80%" }, p: 4 }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', width: { xs: '100%', lg: "80%" }, m: 'auto', p: 3 }}>
                 <Grid container justifyContent="center" spacing={4}>
                     <Grid item xs={12} md={6}>
-                        <Box>
-                            <img src={product.image} alt={product.name} style={{ width: '100%' }} />
-                        </Box>
+                                <Box sx={{ position: 'relative' }}>
+                                    <CardMedia component="img" image={product.image} alt={product.name} sx={{ width: '100%', }} />
+                                    <Search sx={{
+                                        position: 'absolute', top: 12, right: 6, width: 40, height: 40, p: 1, backgroundColor: 'white', color: 'black', borderRadius: '50%'
+                                    }} />
+                                </Box>
+                        <Grid container spacing={2} sx={{py:2}}>
+                            <Grid item xs={6} md={6}>
+                                <Box sx={{ position: 'relative' }}>
+                                    <CardMedia component="img" image={product.image} alt={product.name} sx={{ width: '100%', }} />
+                                    <Search sx={{
+                                        position: 'absolute', top: 12, right: 6, width: 40, height: 40, p: 1, backgroundColor: 'white', color: 'black', borderRadius: '50%'
+                                    }} />
+                                </Box>
+                            </Grid>
+                            <Grid item xs={6} md={6}>
+                                <Box sx={{ position: 'relative' }}>
+                                    <CardMedia component="img" image={product.image} alt={product.name} sx={{ width: '100%', }} />
+                                    <Search sx={{
+                                        position: 'absolute', top: 12, right: 6, width: 40, height: 40, p: 1, backgroundColor: 'white', color: 'black', borderRadius: '50%'
+                                    }} />
+                                </Box>
+                            </Grid>
+                            <Grid item xs={6} md={6}>
+                                <Box sx={{ position: 'relative' }}>
+                                    <CardMedia component="img" image={product.image} alt={product.name} sx={{ width: '100%', }} />
+                                    <Search sx={{
+                                        position: 'absolute', top: 12, right: 6, width: 40, height: 40, p: 1, backgroundColor: 'white', color: 'black', borderRadius: '50%'
+                                    }} />
+                                </Box>
+                            </Grid>
+                        </Grid>
                     </Grid>
 
                     <Grid item xs={12} md={6}>
@@ -105,7 +134,6 @@ function ProductDetail() {
                     </Grid>
                 </Grid>
 
-                {/* Related Products */}
                 <Divider sx={{ my: 4 }} />
                 <SuggetionProducts />
                 {showCart && <CartPanel />}

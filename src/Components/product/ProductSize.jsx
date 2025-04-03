@@ -8,9 +8,10 @@ function ProductSize({ sizes = [], setSelectedSize, selectedSize }) {
                 {sizes.map((size, index) => (
                     <Grid item key={index}>
                         <Button
+                            sx={{backgroundColor:'white', 
+                                color:"black",borderRadius: '2px', textTransform: 'none' }}
                             variant={selectedSize === size ? "contained" : "outlined"}
                             onClick={() => setSelectedSize(size)}
-                            sx={{ borderRadius: '2px', textTransform: 'none' }}
                         >
                             {size}
                         </Button>

@@ -38,7 +38,7 @@ function Cart() {
   const totalAmount = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   return (
-    <Box sx={{ display: 'flex', width: { xs: '100%', md: '100%', lg: "80%" }, m: "auto", flexDirection: 'column' }}>
+    <Box sx={{ display: 'flex', width: { xs: '100%', md: '100%', lg: "80%" }, m: "auto", p:5, flexDirection: 'column' }}>
       <Typography variant='h1' > Cart </Typography>
       <CartStepper />
 

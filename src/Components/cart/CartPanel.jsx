@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Box, Button, Card, CardContent, CardMedia, Grid, IconButton, Typography } from '@mui/material';
 import { Remove, Add, Delete } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 function CartPanel() {
     const [cartItems, setCartItems] = useState([]);
+    const navigate = useNavigate()
 
     useEffect(() => {
         const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -13,6 +15,7 @@ function CartPanel() {
             return;
         }
 
+        
         setCartItems(storedCart);
     }, []);
 
@@ -91,8 +94,14 @@ function CartPanel() {
 
                             <Typography variant="h5" sx={{ mt: 2 }}> Total: Rs {totalAmount} </Typography>
 
-                            <Button variant='contained' sx={{ mt: 3, backgroundColor: "black", color: 'white' }}>
-                                Proceed to Checkout
+                            <Button variant='contained' sx={{ mt: 3, backgroundColor: "black", color: 'white' }}
+                            onClick={() => navigate('/cart')}>
+                                View Cart
+                            </Button>
+
+                            <Button variant='contained' sx={{ mt: 3, backgroundColor: "black", color: 'white' }}
+                            onClick={() => navigate('/cart')}>
+                               Checkout
                             </Button>
                         </>
                     )}
