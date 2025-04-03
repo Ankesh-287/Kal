@@ -2,7 +2,7 @@ import React from 'react';
 import { useTheme } from "@mui/material/styles";
 import { Box, InputBase, IconButton, useMediaQuery } from "@mui/material";
 import { Search } from "@mui/icons-material";
-import { ThemeContext } from "../ThemeContext";
+import { ThemeContext } from "../../ThemeContext";
 
 function SearchBar() {
     const isLargeScreen = useMediaQuery('(min-width:1100px)');

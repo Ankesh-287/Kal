@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Grid, Box } from '@mui/material'
 import Product from './Product.jsx'
-import Heading1 from './Heading1.jsx'
-import Heading from './Heading.jsx'
+import Heading1 from '../Heading1.jsx'
+import Heading from '../Heading.jsx'
 
 
 function Products() {

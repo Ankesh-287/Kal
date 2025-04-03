@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Box, Grid, Typography, Toolbar, } from "@mui/material";
 import Drawbar from "./Drawbar";
-import BreadCrum from "./BreadCrum";
+import BreadCrum from "../BreadCrum";
 import ProductGrid from "./ProductGrid";
-import productsData from "../data/data";
+import productsData from "../../data/data";
 
 const Category = () => {
   const { category, subcategory } = useParams();

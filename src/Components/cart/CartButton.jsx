@@ -3,7 +3,7 @@ import { IconButton, Badge } from "@mui/material";
 import { ShoppingCart } from "@mui/icons-material";
 import { useNavigate } from 'react-router-dom';
 
-function Cart() {
+function CartButton() {
     const [cartCount, setCartCount] = useState(0);
     const navigate = useNavigate();
 
@@ -37,4 +37,4 @@ function Cart() {
     )
 }
 
-export default Cart
+export default CartButton

@@ -1,7 +1,7 @@
 import { Box, Typography, Button } from '@mui/material'
 import { useTheme } from "@mui/material/styles";
 import React from 'react'
-import Heading1 from './Heading1'
+import Heading1 from '../Heading1'
 
 function Ads() {
     const theme = useTheme();
@@ -29,7 +29,6 @@ function Ads() {
                 <Typography variant='h3' sx={{ textAlign: 'center', fontSize: '30px' }}> Be different in your own way! </Typography>
                 <Typography variant='h3' sx={{ textAlign: 'center', fontSize: '20px' }}> Find your unique style. </Typography>
                 <Button sx={{ border: 'none', paddingX: 4, borderRadius: 0, textTransform: 'capitalize', backgroundColor: theme.palette.background.button, color: theme.palette.background.buttonColor, }} > Shop Collection </Button>
-                    {/* <img src="https://frenchcrown.in/cdn/shop/articles/Fashion_Style_Tips_Every_Man_Should_Know.jpg?v=1715837777&width=2048" alt="" /> */}
             </Box>
         </Box>
     )

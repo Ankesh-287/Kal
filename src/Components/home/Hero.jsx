@@ -1,6 +1,6 @@
 import React from 'react'
-import { Box, Typography } from '@mui/material';
-import Products from "../Components/Products.jsx"
+import { Box, CardMedia, Typography } from '@mui/material';
+import Products from "../product/Products"
 
 
 function Hero() {
@@ -8,12 +8,11 @@ function Hero() {
     <>
       <Box
         sx={{
-          width: '100%',
+          width: { xs: '100%', md: '100%', lg: "96%" },
           display: 'flex',
           justifyContent: "space-around",
           paddingX: 3,
           alignItems: 'center',
-          boxSizing: 'border-box',
           flexDirection: { xs: "column", sm: 'row', },
           backgroundColor: '#faedeb',
           color: 'black',
@@ -56,7 +55,8 @@ function Hero() {
           </Box>
         </Box>
 
-        <img src="https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/hero.png" alt=""
+        <CardMedia component="img" 
+        image="https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/hero.png" alt="ads"
           style={{
             width: "30%", zIndex: "10", display: 'flex',
             flexDirection: 'right'

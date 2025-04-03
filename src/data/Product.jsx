@@ -5,10 +5,10 @@ import { Add, Remove } from "@mui/icons-material";
 import productsData from "../data/data";
 
 const ProductDetail = () => {
-  const { id } = useParams(); // Get product ID from URL
+  const { id } = useParams(); 
   const product = Object.values(productsData)
     .flat()
-    .find((item) => item.id === parseInt(id)); // Find product by ID
+    .find((item) => item.id === parseInt(id)); 
 
   const [cart, setCart] = useState([]);
   const [quantity, setQuantity] = useState(1);
@@ -31,7 +31,6 @@ const ProductDetail = () => {
   return (
     <Box sx={{ width: "100%", p: 4 }}>
       <Grid container spacing={4} justifyContent="center">
-        {/* Product Image */}
         <Grid item xs={12} md={6}>
           <Box sx={{ width: "100%" }}>
             <img
@@ -42,7 +41,6 @@ const ProductDetail = () => {
           </Box>
         </Grid>
 
-        {/* Product Details */}
         <Grid item xs={12} md={6}>
           <Typography variant="body1" sx={{ color: "grey.500", fontSize: "20px" }}>
             {product.category?.toUpperCase() || "Category"}
@@ -56,7 +54,6 @@ const ProductDetail = () => {
             ${product.price}
           </Typography>
 
-          {/* Quantity Selector */}
           <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
             <IconButton onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}>
               <Remove />
@@ -69,13 +66,11 @@ const ProductDetail = () => {
             </IconButton>
           </Box>
 
-          {/* Add to Cart Button */}
           <Button variant="contained" sx={{ mt: 2, backgroundColor: "black", color: "white" }}
             onClick={handleCart()}>
             Add to Cart
           </Button>
 
-          {/* Description */}
           <Typography variant="body1" sx={{ mt: 3, color: "grey.700" }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dapibus interdum eros.
             Our T-Shirts are 100% Cotton, 260gsm, Breathable Fabric.

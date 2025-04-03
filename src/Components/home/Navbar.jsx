@@ -2,11 +2,10 @@ import React, { useContext } from "react";
 import { useTheme } from "@mui/material/styles";
 import { AppBar, Toolbar, Typography, Box, IconButton } from "@mui/material";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
-import { ThemeContext } from "../ThemeContext";
-import { Link } from "react-router-dom";
-import Cart from "./Cart";
+import { ThemeContext } from "../../ThemeContext";
 import SearchBar from "./SearchBar";
-import NavItems from "./NavItems";
+import NavItems from "../NavItems";
+import CartButton from "../cart/CartButton";
 
 const Navbar = () => {
   const { mode, toggleTheme } = useContext(ThemeContext);
@@ -19,8 +18,10 @@ const Navbar = () => {
           color: theme.palette.text.primary,
           position: 'relative',
           display:'flex',
+          boxShadow:'none',
+          paddingX: 1,
           justifyContent:'center',
-          minHeight: {xs:'80px', sm:'120px'},
+          minHeight: {xs:'80px', sm:'80px'},
           height:'15%',
           boxSizing:'border-box',
           zIndex: (theme) => theme.zIndex.drawer + 1
@@ -32,15 +33,13 @@ const Navbar = () => {
 
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
             <SearchBar />
-            <Cart />
+            <CartButton />
             <Box>
               <IconButton onClick={toggleTheme} color="inherit">
                 {mode === "dark" ? <Brightness7 /> : <Brightness4 />}
               </IconButton>
             </Box>
-            {/* <Link to="/login" style={{ textDecoration: "none" }}> */}
               <Typography sx={{ cursor: "pointer", "&:hover": { color: "#ccc" } }}>Login</Typography>
-            {/* </Link> */}
           </Box>
         </Toolbar>
       </AppBar>

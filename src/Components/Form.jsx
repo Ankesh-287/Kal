@@ -63,19 +63,19 @@ function Form() {
                     textAlign: { xs: 'center', sm:'left' }
                 }}>
 
-                    <Typography variant="h3" sx={{ fontSize: '38px', fontWeight: 'bold', color: theme.palette.text.primary }}> Get in touch </Typography>
-                    <Typography variant='body1' sx={{ marginY: 2 }}>
+                    <Typography variant="h3" sx={{ fontSize: '38px', fontWeight: 'bold', color:'#000000',  }}> Get in touch </Typography>
+                    <Typography variant='body1' sx={{ marginY: 2, color:'#000000', }}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id leo tempor, congue justo at, lobortis orci.
                     </Typography>
 
                     <Box sx={{ mt: 2 }}>
-                        <Typography variant="body1" sx={{ fontSize: '15px', mb: 3 }}>
+                        <Typography variant="body1" sx={{ fontSize: '15px', mb: 3, color:'#000000', }}>
                             <u>123 Fifth Avenue, New York, NY 10160</u>
                         </Typography>
-                        <Typography variant="body1" sx={{ fontSize: '15px', mb: 3 }}>
+                        <Typography variant="body1" sx={{ fontSize: '15px', mb: 3, color:'#000000', }}>
                             <u>contact@info.com</u>
                         </Typography>
-                        <Typography variant="body1" sx={{ fontSize: '15px' }}>
+                        <Typography variant="body1" sx={{ fontSize: '15px', color:'#000000', }}>
                             9-334-7565-9787
                         </Typography>
                     </Box>
@@ -118,6 +118,7 @@ function Form() {
                             placeholder="Your email address..."
                             value={formData.email}
                             onChange={handleData}
+                            
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -138,9 +139,8 @@ function Form() {
                         mt: 3,
                         width: "100px",
                         textTransform: 'capitalize',
-                        backgroundColor: theme.palette.background.button,
-                        color: theme.palette.background.buttonColor,
-                        "&:hover": { backgroundColor: theme.palette.background.button }
+                        backgroundColor: 'black',
+                        color: 'white',
                     }}>
                     Send
                 </Button>
