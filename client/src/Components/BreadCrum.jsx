@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 function BreadCrum({ openCategory, selectedSubCategory }) {
     return (
         <>
-            <Breadcrumbs aria-label='breadcrumb' sx={{ mb: 2 }}>
+            <Breadcrumbs aria-label='breadcrumb' sx={{ my: 3 }}>
                 <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
                     Home
                 </Link>
