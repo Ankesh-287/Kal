@@ -7,7 +7,6 @@
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -23,6 +22,7 @@
     "mongoose": "^8.13.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "vite": "^6.2.5"
   }
 }
