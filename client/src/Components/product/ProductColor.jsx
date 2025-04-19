@@ -1,4 +1,4 @@
-import { Grid, IconButton } from '@mui/material';
+import { Box, Grid, IconButton, Tooltip } from '@mui/material';
 import React from 'react';
 
 function ProductColor({ colors = [], setSelectedColor, selectedColor }) {
@@ -8,22 +8,42 @@ function ProductColor({ colors = [], setSelectedColor, selectedColor }) {
                 {colors.length > 0 ? (
                     colors.map((color, index) => (
                         <Grid item key={index}>
-                            <IconButton
+                            <Box
                                 sx={{
-                                    backgroundColor: color,
-                                    p: 2,
-                                    width: 24,
-                                    height: 24,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    p: '.1rem',
+                                    backgroundColor: 'white',
+                                    border: selectedColor === color ? '1px solid black' : '1px solid transparent',
                                     borderRadius: 0,
-                                    border: selectedColor === color ? '2px solid black' : '1px solid grey',
+                                    transition: 'all 0.3s ease',
                                     '&:hover': {
-                                        opacity: 0.5,
-                                        backgroundColor: color,
-                                        border: "1px solid grey",
-                                    },
+                                        border: '1px solid #616161',
+                                    }
                                 }}
-                                onClick={() => setSelectedColor(color)}
-                            />
+                            >
+                                <Tooltip
+                                    title= {`${color}`}
+                                    placement="top"
+                                    arrow
+                                >
+                                <IconButton
+                                    disableTouchRipple
+                                    onClick={() => setSelectedColor(color)}
+                                    sx={{
+                                        backgroundColor: color,
+                                        width: 24,
+                                        height: 24,
+                                        borderRadius: 0,
+                                        '&:hover': {
+                                            backgroundColor: color,
+                                            opacity: 0.9,
+                                        }
+                                    }}
+                                />
+                                </Tooltip>
+                            </Box>
                         </Grid>
                     ))
                 ) : (

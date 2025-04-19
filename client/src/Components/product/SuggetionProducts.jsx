@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Card, CardMedia, Grid, Typography } from '@mui/material';
 import { ShoppingBasket, VisibilityOutlined } from '@mui/icons-material';
-import productsData from '../data/data';
+import productsData from '../../data/data';
 import { useNavigate } from 'react-router-dom';
 
 const SuggetionProducts = () => {
@@ -27,11 +27,11 @@ const SuggetionProducts = () => {
                                 },
                             }}
                         >
-                            <CardMedia component="img" image={item.image} alt={item.name} 
-                            sx={{ 
-                                width: '100%', 
-                                cursor:'pointer',
-                                transform: 'zoom' 
+                            <CardMedia component="img" image={item.image} alt={item.name}
+                                sx={{
+                                    width: '100%',
+                                    cursor: 'pointer',
+                                    transform: 'zoom'
                                 }} />
                             <Box sx={{ p: 1 }}>
 

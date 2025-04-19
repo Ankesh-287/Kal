@@ -1,24 +1,52 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-const CategorySlice = createSlice ({
-    name: 'category',
-    initialState: {
-        categories: [],
-        loading: false,
-        error: null,
-    }, 
-    reducers: {
-        getCategories: (state, action) => {
-            state.categories = action.payload;
-        },
-        setCategoryLoading: (state, action) => {
-            state.loading = action.payload;
-        },
-        setCategoryError: (state, action) => {
-            state.error = action.payload;
-        },
+export const fetchAllCategories = createAsyncThunk(
+  'category/fetchAll',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get('/api/categories');
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data.message || error.message);
+    }
+  }
+);
+
+const categorySlice = createSlice({
+  name: 'category',
+  initialState: {
+    categories: [],
+    loading: false,
+    error: null,
+    selectedCategory: null,
+    selectedSubCategory: null,
+  },
+  reducers: {
+    setSelectedCategory: (state, action) => {
+      state.selectedCategory = action.payload;
+      state.selectedSubCategory = null;
     },
+    setSelectedSubCategory: (state, action) => {
+      state.selectedSubCategory = action.payload;
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchAllCategories.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchAllCategories.fulfilled, (state, action) => {
+        state.loading = false;
+        state.categories = action.payload;
+      })
+      .addCase(fetchAllCategories.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
+  }
 });
 
-export const { setCategories, setCategoryLoading, setCategoryError} = CategorySlice.actions;
-export default CategorySlice.reducer;
+export const { setSelectedCategory, setSelectedSubCategory } = categorySlice.actions;
+export default categorySlice.reducer;

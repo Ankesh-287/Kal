@@ -6,13 +6,22 @@ const ProductQuantity = ({ handleAddCart, handleDecrease, handleIncrease, quanti
     return (
         <>
             <Box sx={{ display: 'flex', alignItems: 'center', mt: 3 }}>
-                <IconButton onClick={handleDecrease} sx={{ border: '1px solid gray', borderRadius: 0 }}>
+                <IconButton onClick={handleDecrease} sx={{ 
+                    color: 'grey', 
+                    fontWeight: '400',
+                    border: '1px solid gray', 
+                    borderRadius: 0 }}>
                     <Remove />
                 </IconButton>
                 <Typography variant="h6" sx={{ mx: 2 }}>
                     {quantity}
                 </Typography>
-                <IconButton onClick={handleIncrease} sx={{ border: '1px solid gray', borderRadius: 0 }}>
+                <IconButton onClick={handleIncrease} sx={{ 
+                    color: 'grey', 
+                    fontWeight: '400',
+                    border: '1px solid gray', 
+                    borderRadius: 0 
+                    }}>
                     <Add />
                 </IconButton>
                 <Button variant="contained" sx={{ mx: 3, px: 3 }}

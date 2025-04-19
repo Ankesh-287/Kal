@@ -2,12 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchAllProducts } from '../../redux/slices/productSlice';
 
-import {
-    Grid,
-    Card,
-    CardContent,
-    CardMedia,
-    Typography,
+import {  Grid, Card, CardContent, CardMedia, Typography,
     CircularProgress,
     Alert,
     Box,
@@ -21,7 +16,7 @@ const NewProducts = () => {
     useEffect(() => {
         dispatch(fetchAllProducts());
     }, [dispatch]);
-    
+
 
     if (loading) {
         return (
@@ -57,9 +52,7 @@ const NewProducts = () => {
                                 />
                                 <CardContent>
                                     <Typography variant="h6">{product.name}</Typography>
-                                    <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
-                                        {product.desc}
-                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>{product.desc}</Typography>
                                     <Typography variant="body2"><strong>Category:</strong> {product.category}</Typography>
                                     <Typography variant="body2"><strong>Price:</strong> ₹{product.price}</Typography>
                                     <Typography variant="body2"><strong>Colors:</strong> {product.colors.join(', ')}</Typography>

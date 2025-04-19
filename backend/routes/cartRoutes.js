@@ -1,5 +1,5 @@
 import express from "express";
-import Cart from "../models/Cart.js";
+import Cart from "../models/CartModel.js";
 const router = express.Router();
 
 router.get("/", async (req, res) => {
