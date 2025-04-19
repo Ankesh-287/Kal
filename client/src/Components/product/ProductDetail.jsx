@@ -1,17 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ExpandBars from '../ExpandBars';
-import { Box, Grid, Typography, Divider, CardMedia } from '@mui/material';
-import { useParams } from 'react-router-dom';
+import { Box, Grid, Typography, Divider } from '@mui/material';
+import { useNavigate, useParams } from 'react-router-dom';
 import productsData from '../../data/data';
-import SuggetionProducts from '../SuggetionProducts';
+import SuggetionProducts from './SuggetionProducts';
 import ProductQuantity from './ProductQuantity';
 import ProductSize from './ProductSize';
 import ProductColor from './ProductColor';
 import CartPanel from '../cart/CartPanel';
-import { Search } from '@mui/icons-material';
+import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
+import StickySubHeader from './StickySubheader';
+import ProductFrame from './ProductFrame';
 
 function ProductDetail() {
     const { id } = useParams();
+    const navigate = useNavigate();
+    const productId = parseInt(id);
+
+    const goToPrevProduct = () => { if (productId > 1) { navigate(`/product-detail/${productId - 1}`); } };
+
+    const goToNextProduct = () => {
+        const nextId = productId + 1;
+        if (isValidProduct(nextId)) navigate(`/product-detail/${nextId}`);
+    };
+
+
+    const isValidProduct = (id) => {
+        for (const category in productsData) {
+            for (const subCategory in productsData[category]) {
+                if (productsData[category][subCategory].some(p => p.id === id)) return true;
+            }
+        }
+        return false;
+    };
+
+    const productImageRef = useRef(null);
+    const [showSticky, setShowSticky] = useState(false);
     const [product, setProduct] = useState(null);
     const [quantity, setQuantity] = useState(1);
     const [showCart, setShowCart] = useState(false);
@@ -37,6 +61,22 @@ function ProductDetail() {
             setSelectedSize(getProduct.size.length > 0 ? getProduct.size[0] : null);
         }
     }, [id]);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (productImageRef.current) {
+                const top = productImageRef.current.getBoundingClientRect().top;
+                setShowSticky(top <= 0);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     const handleIncrease = () => setQuantity(quantity + 1);
     const handleDecrease = () => quantity > 1 && setQuantity(quantity - 1);
@@ -74,55 +114,33 @@ function ProductDetail() {
         <>
             <Box sx={{ display: 'flex', flexDirection: 'column', width: { xs: '100%', lg: "80%" }, m: 'auto', p: 3 }}>
                 <Grid container justifyContent="center" spacing={4}>
-                    <Grid item xs={12} md={6}>
-                                <Box sx={{ position: 'relative' }}>
-                                    <CardMedia component="img" image={product.image} alt={product.name} sx={{ width: '100%', }} />
-                                    <Search sx={{
-                                        position: 'absolute', top: 12, right: 6, width: 40, height: 40, p: 1, backgroundColor: 'white', color: 'black', borderRadius: '50%'
-                                    }} />
-                                </Box>
-                        <Grid container spacing={2} sx={{py:2}}>
-                            <Grid item xs={6} md={6}>
-                                <Box sx={{ position: 'relative' }}>
-                                    <CardMedia component="img" image={product.image} alt={product.name} sx={{ width: '100%', }} />
-                                    <Search sx={{
-                                        position: 'absolute', top: 12, right: 6, width: 40, height: 40, p: 1, backgroundColor: 'white', color: 'black', borderRadius: '50%'
-                                    }} />
-                                </Box>
-                            </Grid>
-                            <Grid item xs={6} md={6}>
-                                <Box sx={{ position: 'relative' }}>
-                                    <CardMedia component="img" image={product.image} alt={product.name} sx={{ width: '100%', }} />
-                                    <Search sx={{
-                                        position: 'absolute', top: 12, right: 6, width: 40, height: 40, p: 1, backgroundColor: 'white', color: 'black', borderRadius: '50%'
-                                    }} />
-                                </Box>
-                            </Grid>
-                            <Grid item xs={6} md={6}>
-                                <Box sx={{ position: 'relative' }}>
-                                    <CardMedia component="img" image={product.image} alt={product.name} sx={{ width: '100%', }} />
-                                    <Search sx={{
-                                        position: 'absolute', top: 12, right: 6, width: 40, height: 40, p: 1, backgroundColor: 'white', color: 'black', borderRadius: '50%'
-                                    }} />
-                                </Box>
-                            </Grid>
-                        </Grid>
-                    </Grid>
 
-                    <Grid item xs={12} md={6}>
-                        <Typography variant="body2" sx={{ color: 'gray', fontSize: '18px' }}>
+
+                    <ProductFrame image={product.image} name={product.name} productImageRef={productImageRef} />
+
+                    <Grid item xs={12} md={6} sx={{ position: 'relative' }}>
+                        <Typography variant="body2" sx={{ color: 'gray', fontWeight: '300' }}>
                             {product.type.toUpperCase()}
                         </Typography>
-                        <Typography variant="h4" sx={{ fontWeight: 'bold', mt: 1 }}>{product.name}</Typography>
-                        <Typography variant="h5" sx={{ fontWeight: 'bold', mt: 1 }}>
-                            Rs {product.price}
-                            <span style={{ fontSize: '14px', color: 'gray.300', fontWeight: '100' }}> & Free Shipping </span>
-                        </Typography>
+                        <Typography variant="h5" sx={{ fontWeight: '600', mt: 1 }}> {product.name} </Typography>
 
-                        <Typography variant="body1" sx={{ mt: 1, color: 'gray' }}>{product.desc}</Typography>
+                        <Typography variant="h6" sx={{ display: 'inline-block', fontWeight: '600', mt: 1 }}>  Rs {product.price} </Typography>
+
+                        <Typography variant="subtitle2" sx={{ display: 'inline-block', color: 'grey', fontWeight: '400' }}> & Free Shipping </Typography>
+
+                        <Typography variant="subtitle2" sx={{ mt: 1, color: 'grey', fontWeight: '400' }}>{product.desc}</Typography>
 
                         <ProductColor colors={product.colors} setSelectedColor={setSelectedColor} selectedColor={selectedColor} />
-                        <ProductSize sizes={product.size} setSelectedSize={setSelectedSize} selectedSize={selectedSize} />
+
+                        <ProductSize
+                            sizes={product.size}
+                            setSelectedSize={setSelectedSize}
+                            selectedSize={selectedSize}
+                            onClear={() => {
+                                setSelectedColor(null);
+                                setSelectedSize(null);
+                            }}
+                        />
 
                         <Divider />
 
@@ -131,10 +149,35 @@ function ProductDetail() {
                         <Divider sx={{ my: 4 }} />
 
                         <ExpandBars expandTitle="Description" subTitle="About the product" subDesc={product.desc} subList="100% Cotton" />
-                    </Grid>
-                </Grid>
 
+                        <Box sx={{
+                            width: '60px',
+                            height: '24px',
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            position: 'absolute',
+                            alignItems: 'center',
+                            top: 15,
+                            right: 0,
+                            my: 2,
+                        }}>
+                            <ArrowBackIos onClick={goToPrevProduct} sx={{ cursor: 'pointer', border: '1px solid', p: '5px' }} />
+                            <ArrowForwardIos onClick={goToNextProduct} sx={{ cursor: 'pointer', border: '1px solid', p: '5px' }} />
+                        </Box>
+                    </Grid>
+
+
+                </Grid>
                 <Divider sx={{ my: 4 }} />
+                {showSticky && (
+                    <StickySubHeader
+                        product={product}
+                        quantity={quantity}
+                        selectedColor={selectedColor}
+                        selectedSize={selectedSize}
+                        handleAddCart={handleAddCart}
+                    />
+                )}
                 <SuggetionProducts />
                 {showCart && <CartPanel />}
             </Box>

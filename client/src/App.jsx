@@ -12,6 +12,8 @@ import ProductDetail from "./Components/product/ProductDetail.jsx";
 import ProductPage from "./pages/ProductPage.jsx";
 import './App.css'
 import CheckOut from "./Components/cart/CheckOut.jsx";
+import Structure from "./Components/product/Structure.jsx";
+import NewProducts from "./Components/product/NewProducts.jsx";
 
 const App = () => {
   return (
@@ -30,6 +32,8 @@ const App = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/products" element={<ProductPage />} />
           <Route path="/checkout" element={<CheckOut />} />
+          <Route path="/str" element={<Structure />} />
+          <Route path="/page" element={<NewProducts />} />
         </Routes>
 
         <Footer />

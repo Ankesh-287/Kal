@@ -41,7 +41,7 @@ const ThemeProviderComponent = ({ children }) => {
         },
         typography: {
           fontFamily: "Poppins, sans-serif",
-          h1: { fontSize: { xs: '30px', sm: '38px', md: '40px', lg: '44px', fontWeight: "600="  } },
+          h1: { fontSize: { xs: '30px', sm: '38px', md: '40px', lg: '44px', fontWeight: "600=" } },
           h2: { fontSize: "2.5rem", fontWeight: "bold" },
           body1: { fontSize: "1rem" },
           button: { textTransform: "none", fontWeight: "bold" },
@@ -56,16 +56,20 @@ const ThemeProviderComponent = ({ children }) => {
                     borderColor: '#ccc',
                   },
                   '&:hover fieldset': {
-                    borderColor: '#000', 
+                    borderColor: '#000',
                   },
                   '&.Mui-focused fieldset': {
-                    borderColor: '#000', 
+                    borderColor: '#000',
                   },
                 },
               },
             },
           },
           MuiButton: {
+            defaultProps: {
+              disableTouchRipple: true,
+              disableFocusRipple: true,
+            },
             styleOverrides: {
               root: {
                 borderRadius: "0px",
@@ -79,6 +83,12 @@ const ThemeProviderComponent = ({ children }) => {
               },
             },
           },
+          MuiIconButton:{
+            defaultProps: {
+              disableTouchRipple: true,
+              disableFocusRipple: true,
+            },
+          }
         },
       }),
     [mode]
