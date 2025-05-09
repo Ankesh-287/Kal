@@ -17,6 +17,7 @@ function Footer() {
       <Box
         sx={{
           backgroundColor: '#faedeb',
+          color: 'grey.900',
           flexDirection: 'column',
           alignItems: 'center',
           display: 'flex',
@@ -57,7 +58,6 @@ function Footer() {
       <Box
         sx={{
           backgroundColor: '#000000',
-          color:'white',
           flexDirection: 'column',
           alignItems: 'center',
           display: 'flex',

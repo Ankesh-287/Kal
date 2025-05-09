@@ -8,12 +8,13 @@ function CartList({ cartItems, updateQuantity, removeItem }) {
         <>
             {cartItems.map((item, index) => (
                 <Grid container key={`${item.id}-${item.color}-${item.size}-${index}`}
-                    sx={{ border: '1px solid grey', borderTop: 0 }}>
+                    sx={{ border: '1px solid grey', borderTop: 0, boxSizing:'border-box'}}>
+                        
                     <Grid item xs={2} sm={2} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <IconButton onClick={() => removeItem(item.id, item.color, item.size)}> 
+                        <IconButton sx={{p:1}} onClick={() => removeItem(item.id, item.color, item.size)}> 
                             <CancelOutlined /> 
                         </IconButton>
-                        <CardMedia component="img" sx={{ width: 100, height: 100, p: 1 }} image={item.image} alt={item.name} />
+                        <CardMedia component="img" sx={{ width: 100, height: 100, p: 2 }} image={item.image} alt={item.name} />
                     </Grid>
 
                     <Grid item xs={4} sm={4} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', p: 2 }}>

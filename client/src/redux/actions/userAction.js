@@ -4,7 +4,7 @@ import { setUserInfo, setUserLoading, setUserError } from '../slices/userSlice';
 export const loginUser = (credentials) => async (dispatch) => {
   try {
     dispatch(setUserLoading(true));
-    const res = await axios.post('/api/users/login', credentials);
+    const res = await axios.post('/api/users/login', credentials, { withCredentials: true });
     dispatch(setUserInfo(res.data));
   } catch (err) {
     dispatch(setUserError(err.message));
