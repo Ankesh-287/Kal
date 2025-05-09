@@ -30,15 +30,15 @@ function CartSummary({ totalAmount}) {
         {showCoupon && (
           <Grid container columnSpacing={1} sx={{mt:5}}>
             <Grid item xs={9} sx={{ py:1 }}>
-              <TextField fullWidth name='message' placeholder='Coupon Code' />
+              <TextField fullWidth size='small' name='message' placeholder='Coupon Code' />
             </Grid>
             <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center',  }}>
-              <Button variant='contained' sx={{ p: 2, width: '100%' }}>Apply</Button>
+              <Button variant='contained' sx={{ p: 1, width: '100%' }}>Apply</Button>
             </Grid>
           </Grid>
         )}
 
-        <Grid item xs={12} sx={{  }}>
+        <Grid item xs={12}>
           <Button variant='contained' sx={{ width: '100%' }}>
             Proceed to Checkout
           </Button>

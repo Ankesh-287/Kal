@@ -3,11 +3,12 @@ import { Box, Drawer, List, ListItem, ListItemButton, ListItemText, IconButton }
 import { Close } from '@mui/icons-material';
 
 const Items = [
-  { link: "Buy T-Shirts", path: 'products' },
-  { link: "Women", path: 'women' },
-  { link: "Men", path: 'men' },
-  { link: "About", path: 'about' },
-  { link: "Contact", path: 'contact' },
+  { link: "Home", path: '/' },
+  { link: "Buy T-Shirts", path: '/product-category/products' },
+  { link: "Women", path: '/product-category/women' },
+  { link: "Men", path: '/product-category/men' },
+  { link: "About", path: '/about' },
+  { link: "Contact", path: '/contact' },
 ];
 
 function Sidebar({ open, setOpen }) {
@@ -24,7 +25,7 @@ function Sidebar({ open, setOpen }) {
         <List>
           {Items.map((item) => (
             <ListItem key={item.link} disablePadding>
-              <ListItemButton onClick={toggleDrawer(false)}>
+              <ListItemButton to={item.path} onClick={toggleDrawer(false)}>
                 <ListItemText primary={item.link} />
               </ListItemButton>
             </ListItem>

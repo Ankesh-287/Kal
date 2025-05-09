@@ -23,7 +23,7 @@ const SidebarWithProducts = () => {
 
   useEffect(() => {
     dispatch(fetchAllCategories());
-  }, [dispatch]);
+  }, [dispatch, products]);
 
   useEffect(() => {
     dispatch(fetchFilteredProducts({
@@ -86,14 +86,14 @@ const SidebarWithProducts = () => {
                   alt={product.name}
                 />
               </Card>
-              <Typography>
+              <Typography variant='h6'>
                 {product.name}
               </Typography>
               <Typography>
                 {product.desc}
               </Typography>
               <Typography>
-                {product.price}
+              ₹{product.price}
               </Typography>
             </Grid>
           ))}

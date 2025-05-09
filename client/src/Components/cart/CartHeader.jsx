@@ -5,7 +5,7 @@ function CartHeader() {
     return (
         <>
             <Grid container sx={{ p: 1, backgroundColor: 'pink', border: '1px solid grey', fontWeight: 'bold' }} >
-                <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', }} >
+                <Grid item xs={2} sm={2} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', }} >
                     
                 </Grid>
                 <Grid item xs={3} >
@@ -19,6 +19,8 @@ function CartHeader() {
                 </Grid>
                 <Grid item xs={2} >
                     Subtotal
+                </Grid>
+                <Grid item xs={1} >
                 </Grid>
             </Grid>
         </>

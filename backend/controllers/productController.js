@@ -38,7 +38,7 @@ export const createProduct = async (req, res) => {
 };
 
 export const updateProduct = async (req, res) => {
-    const updated = await Product.findOneAndUpdate(req.params.id, req.body, { new: true });
+    const updated = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.json(updated);
 };
 
