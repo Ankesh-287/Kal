@@ -19,7 +19,7 @@ function Homepage() {
         alignItems: 'center',
         width: '100%',
         boxSizing: 'border-box',
-        px: 2,
+        px: { xs:2, },
       }}
     >
       {/* <ProductDetail /> */}

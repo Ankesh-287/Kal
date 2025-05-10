@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, CardMedia, Typography } from '@mui/material';
+import { Box, CardMedia, Typography, Grid } from '@mui/material';
 import Products from "../product/Products"
 
 
@@ -10,6 +10,7 @@ function Hero() {
         sx={{
           width: { xs: '100%', md: '100%', lg: "96%" },
           display: 'flex',
+          height:'100vh',
           justifyContent: "space-around",
           paddingX: 3,
           alignItems: 'center',
@@ -18,7 +19,7 @@ function Hero() {
           color: 'black',
         }}
       >
-        <Box sx={{
+        <Grid sx={{
           m: 8,
           display: 'flex',
           flexDirection: 'column',
@@ -27,17 +28,18 @@ function Hero() {
           width: '100%',
           textAlign: { xs: 'center', sm: 'left' },
         }}>
-          <Box sx={{ width: '100%', alignItems: 'left' }}>
+          <Grid item sx={{ width: '100%', alignItems: 'left' }}>
             <Typography variant="h3" color="initial"
               sx={{
                 fontSize: '12px',
               }}
             >Women</Typography>
-          </Box>
+          </Grid>
           <Box sx={{ width: '100%', alignItems: 'left' }}>
             <Typography variant="h3" color="initial"
               sx={{
                 marginY: '20px',
+                fontFamily:'inherit',
                 fontWeight: 'bold',
                 fontSize: { xs: '27px', sm: '35px', md: '44px', lg: '54px' },
                 textAlign: { xs: 'center', sm: 'left' },
@@ -53,7 +55,7 @@ function Hero() {
                 border: 'none',
               }}> Shop Collection </button>
           </Box>
-        </Box>
+        </Grid>
 
         <CardMedia component="img" 
         image="https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/hero.png" alt="ads"

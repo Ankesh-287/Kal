@@ -7,6 +7,8 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   cpassword: { type: String, required: true },
-}, { timestamps: true });
-
+  wishlist: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
+  
+}, { timestamps: true },
+);
 export default mongoose.model('User', userSchema);
