@@ -9,7 +9,7 @@ import ProductSize from './ProductSize';
 import ProductColor from './ProductColor';
 import CartPanel from '../cart/CartPanel';
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
-import StickySubHeader from './StickySubheader.jsx';
+// import StickySubHeader from './StickySubheader.jsx';
 import ProductFrame from './ProductFrame';
 
 function ProductDetail() {
@@ -170,13 +170,13 @@ function ProductDetail() {
                 </Grid>
                 <Divider sx={{ my: 4 }} />
                 {showSticky && (
-                    <StickySubHeader
-                        product={product}
-                        // quantity={quantity}
-                        // selectedColor={selectedColor}
-                        // selectedSize={selectedSize}
-                        handleAddCart={handleAddCart}
-                    />
+                    // <StickySubHeader
+                    //     product={product}
+                    //     // quantity={quantity}
+                    //     // selectedColor={selectedColor}
+                    //     // selectedSize={selectedSize}
+                    //     handleAddCart={handleAddCart}
+                    // />
                 )}
                 <SuggetionProducts />
                 {showCart && <CartPanel />}
