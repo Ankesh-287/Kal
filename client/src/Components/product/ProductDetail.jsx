@@ -12,14 +12,14 @@ import ProductQuantity from './ProductQuantity';
 import ExpandBars from '../ExpandBars';
 import SuggetionProducts from './SuggetionProducts';
 import CartPanel from '../cart/CartPanel';
-import StickySubHeader from './StickySubheader';
+// import StickySubHeader from './StickySubheader';
 import ProductText from './ProductText';
 
 function ProductDetail() {
     const { id } = useParams();
     const dispatch = useDispatch();
     const productImageRef = useRef(null);
-    const [showSticky, setShowSticky] = useState(false);
+    // const [showSticky, setShowSticky] = useState(false);
     const [quantity, setQuantity] = useState(1);
     const [selectedColor, setSelectedColor] = useState(null);
     const [selectedSize, setSelectedSize] = useState(null);
@@ -173,7 +173,7 @@ function ProductDetail() {
                     </Grid>
 
                     <Divider sx={{ my: 4 }} />
-                    {showSticky && (
+                    {/* {showSticky && (
                         <StickySubHeader
                             product={product}
                             quantity={quantity}
@@ -181,7 +181,7 @@ function ProductDetail() {
                             selectedSize={selectedSize}
                             handleAddCart={handleAddCart}
                         />
-                    )}
+                    )} */}
                 </Grid>
 
                 <SuggetionProducts />
