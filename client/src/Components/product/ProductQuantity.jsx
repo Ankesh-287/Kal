@@ -1,12 +1,11 @@
 import { Add, Remove } from '@mui/icons-material'
 import { Button, Box, IconButton, Typography } from '@mui/material'
-import React from 'react'
 
 const ProductQuantity = ({ handleAddCart, handleDecrease, handleIncrease, quantity}) => {
     return (
         <>
             <Box sx={{ display: 'flex', alignItems: 'center', mt: 3 }}>
-                <IconButton onClick={handleDecrease} sx={{ 
+                <IconButton size="small" onClick={handleDecrease} sx={{ 
                     color: 'grey', 
                     fontWeight: '400',
                     border: '1px solid gray', 
@@ -16,7 +15,7 @@ const ProductQuantity = ({ handleAddCart, handleDecrease, handleIncrease, quanti
                 <Typography variant="h6" sx={{ mx: 2 }}>
                     {quantity}
                 </Typography>
-                <IconButton onClick={handleIncrease} sx={{ 
+                <IconButton size="small" onClick={handleIncrease} sx={{ 
                     color: 'grey', 
                     fontWeight: '400',
                     border: '1px solid gray', 
@@ -24,7 +23,7 @@ const ProductQuantity = ({ handleAddCart, handleDecrease, handleIncrease, quanti
                     }}>
                     <Add />
                 </IconButton>
-                <Button variant="contained" sx={{ mx: 3, px: 3 }}
+                <Button variant="contained" size="small" sx={{ mx: 3, px: 3 }}
                     onClick={handleAddCart}>
                         Add to cart
                 </Button>

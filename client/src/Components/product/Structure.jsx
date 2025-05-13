@@ -31,7 +31,7 @@ function Structure() {
 
     return (
         <>
-            <Container sx={{ mt: 4 }}>
+            <>
                 <Sidebar />
                 {/* <Grid container spacing={3} >
                     {Array.isArray(products) && products.length > 0 ? (
@@ -48,7 +48,7 @@ function Structure() {
                     </Typography>
                     )}
                 </Grid> */}
-            </Container>
+            </>
         </>
     )
 }
