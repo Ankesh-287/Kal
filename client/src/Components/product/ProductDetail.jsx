@@ -35,7 +35,7 @@ function ProductDetail() {
     };
 
     const productImageRef = useRef(null);
-    const [showSticky, setShowSticky] = useState(false);
+    // const [showSticky, setShowSticky] = useState(false);
     const [product, setProduct] = useState(null);
     const [quantity, setQuantity] = useState(1);
     const [showCart, setShowCart] = useState(false);
@@ -66,7 +66,7 @@ function ProductDetail() {
         const handleScroll = () => {
             if (productImageRef.current) {
                 const top = productImageRef.current.getBoundingClientRect().top;
-                setShowSticky(top <= 0);
+                // setShowSticky(top <= 0);
             }
         };
 
