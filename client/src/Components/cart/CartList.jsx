@@ -1,5 +1,4 @@
 // CartList.js
-import React from 'react';
 import { CardMedia, Grid, IconButton, Typography } from '@mui/material';
 import { Add, CancelOutlined, Remove } from '@mui/icons-material';
 
