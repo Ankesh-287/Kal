@@ -172,9 +172,9 @@ function ProductDetail() {
                 {showSticky && (
                     <StickySubHeader
                         product={product}
-                        quantity={quantity}
-                        selectedColor={selectedColor}
-                        selectedSize={selectedSize}
+                        // quantity={quantity}
+                        // selectedColor={selectedColor}
+                        // selectedSize={selectedSize}
                         handleAddCart={handleAddCart}
                     />
                 )}
