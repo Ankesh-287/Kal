@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography, CardMedia, Paper, useTheme, Button } from '@mui/material';
 
 const StickySubHeader = ({ product, handleAddCart }) => {
