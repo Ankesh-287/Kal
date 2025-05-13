@@ -12,7 +12,7 @@ import ProductQuantity from './ProductQuantity';
 import ExpandBars from '../ExpandBars';
 import SuggetionProducts from './SuggetionProducts';
 import CartPanel from '../cart/CartPanel';
-import StickySubHeader from './StickySubheader.jsx';
+import StickySubHeader2 from './StickySubheader2.jsx';
 import ProductText from './ProductText';
 
 function ProductDetail2() {
@@ -159,7 +159,7 @@ function ProductDetail2() {
 
                     <Divider sx={{ my: 4 }} />
                     {showSticky && (
-                        <StickySubHeader
+                        <StickySubHeader2
                             product={product}
                             handleAddCart={handleAddCart}
                         />
