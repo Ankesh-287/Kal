@@ -40,7 +40,7 @@ function Hero() {
               sx={{
                 marginY: '20px',
                 fontFamily:'inherit',
-                fontWeight: 'bold',
+                fontWeight: '500',
                 fontSize: { xs: '27px', sm: '35px', md: '44px', lg: '54px' },
                 textAlign: { xs: 'center', sm: 'left' },
               }}

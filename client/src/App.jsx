@@ -9,6 +9,7 @@ import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import Cart from './pages/Cart.jsx';
 import ProductDetail from "./Components/product/ProductDetail.jsx";
+import ProductDetail2 from "./Components/product/ProductDetail2.jsx";
 import ProductPage from "./pages/ProductPage.jsx";
 import './App.css'
 import CheckOut from "./Components/cart/CheckOut.jsx";
@@ -21,6 +22,7 @@ import ProtectedRoutes from './Components/ProtectedRoutes.jsx'
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchUser } from './redux/slices/userSlice';
+import ProductListAdmin from "./Components/product/ProductListAdmin.jsx";
 
 
 const App = () => {
@@ -40,9 +42,11 @@ const App = () => {
           <Route path="/product-category/:category" element={<Category />} />
           <Route path="/product-category/:category/:subCategory" element={<Category />} />
           <Route path="/product-detail/:id" element={<ProductDetail />} />
+          <Route path="/product/:id" element={<ProductDetail2 />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/products" element={<ProductPage />} />
+          <Route path="/admin" element={<ProductListAdmin />} />
           <Route path="/checkout" element={
             <ProtectedRoutes>
               <CheckOut />

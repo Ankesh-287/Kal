@@ -86,7 +86,6 @@ const Category = () => {
         <Drawbar productsData={productsData} openCategory={openCategory} handleCategoryClick={handleCategoryClick} handleSubCategoryChange={handleSubcategoryChange} selectedSubCategory={selectedSubcategory} />
         </Grid>
         <Grid item lg={10} sx={{ p: 4 }}>
-          {/* <Toolbar /> */}
           <BreadCrum openCategory={openCategory} selectedSubCategory={selectedSubcategory} />
           <Typography variant="h5" sx={{ mb: 2, fontWeight: 'bold' }}>
             {selectedSubcategory ? `${selectedSubcategory} Products` : "Select a Subcategory"}
