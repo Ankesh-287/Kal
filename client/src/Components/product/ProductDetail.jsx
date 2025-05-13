@@ -70,21 +70,6 @@ function ProductDetail() {
 
     useEffect(() => {
         dispatch(fetchProduct(id));
-
-        const handleScroll = () => {
-            if (productImageRef.current) {
-                const top = productImageRef.current.getBoundingClientRect().top;
-                setShowSticky(top <= 0);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        handleScroll();
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-
     }, [dispatch, id]);
 
     useEffect(() => {
