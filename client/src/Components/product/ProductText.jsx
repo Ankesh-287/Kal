@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material"
 
-function ProductText({ image, category, name, price, stock, desc }) {
+function ProductText({ category, name, price, stock, desc }) {
     return (
         <>
             <Typography variant="body2" sx={{ color: 'gray', fontWeight: '300' }}>

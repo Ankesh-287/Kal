@@ -2,21 +2,21 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios';
 import API from '../../api/axios.js'
 
-export const fetchAllProducts = createAsyncThunk(
-    'product/fetchAllProducts',
-    async () => {
-        const res = await axios.get('/api/products');
-        return res.data.data;
-    }
-);
-
 export const fetchProduct = createAsyncThunk('product/fetchProduct', async(id) => {
     const res = await API.get(`/products/${id}`);
     return res.data;
 })
 
+export const fetchAllProducts = createAsyncThunk(
+    'product/fetchAllProducts',
+    async () => {
+        const res = await API.get('/products');
+        return res.data.data;
+    }
+);
+
 export const fetchFilteredProducts = createAsyncThunk(
-  'product/fetchFilteredProducts',
+   'product/fetchFilteredProducts',
   async (filters) => {
     const { category, subCategory, sort } = filters;
 
@@ -30,11 +30,10 @@ export const fetchFilteredProducts = createAsyncThunk(
   }
 );
 
-
 export const updateProduct = createAsyncThunk(
   'product/updateProduct',
   async ({ id, updates }) => {
-    const res = await API.put(`/products/${id}`, updates);
+    const res = await API.put(`/products/${id}`, updates); 
     return res.data;
   }
 );
