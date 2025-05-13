@@ -2,9 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { fetchProduct } from '../../redux/slices/productSlice';
-import {
-    Box, Divider, Grid, Typography, CircularProgress, Backdrop
-} from '@mui/material';
+import { Box, Divider, Grid, Typography, CircularProgress, Backdrop } from '@mui/material';
 import ProductFrame from './ProductFrame';
 import ProductColor from './ProductColor';
 import ProductSize from './ProductSize';
@@ -12,14 +10,12 @@ import ProductQuantity from './ProductQuantity';
 import ExpandBars from '../ExpandBars';
 import SuggetionProducts from './SuggetionProducts';
 import CartPanel from '../cart/CartPanel';
-// import StickySubHeader from './StickySubheader';
 import ProductText from './ProductText';
 
 function ProductDetail() {
     const { id } = useParams();
     const dispatch = useDispatch();
     const productImageRef = useRef(null);
-    // const [showSticky, setShowSticky] = useState(false);
     const [quantity, setQuantity] = useState(1);
     const [selectedColor, setSelectedColor] = useState(null);
     const [selectedSize, setSelectedSize] = useState(null);
@@ -29,8 +25,14 @@ function ProductDetail() {
 
     const handleIncrease = () => setQuantity(quantity + 1);
     const handleDecrease = () => quantity > 1 && setQuantity(quantity - 1);
+    
+    const hasCartItems = () => {
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    return cart.length > 0;
+};
 
     const handleAddCart = () => {
+        
         if (!selectedColor || !selectedSize) {
             alert("Please select color and size");
             return;
@@ -64,7 +66,6 @@ function ProductDetail() {
         setTimeout(() => {
             setAddingToCart(false);
             setShowCart(true);
-            alert("Product added to Cart!");
         }, 800);
     };
 
@@ -170,7 +171,7 @@ function ProductDetail() {
                 </Grid>
 
                 <SuggetionProducts />
-                {showCart && <CartPanel />}
+                {showCart && hasCartItems() && <CartPanel />}{showCart && <CartPanel />}
             </Box>
         </>
     );
