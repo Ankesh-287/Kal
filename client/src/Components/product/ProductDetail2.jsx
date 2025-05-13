@@ -12,7 +12,7 @@ import ProductQuantity from './ProductQuantity';
 import ExpandBars from '../ExpandBars';
 import SuggetionProducts from './SuggetionProducts';
 import CartPanel from '../cart/CartPanel';
-import StickySubHeader from './StickySubheader';
+import StickySubHeader from './StickySubheader.jsx';
 import ProductText from './ProductText';
 
 function ProductDetail2() {

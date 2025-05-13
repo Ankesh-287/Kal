@@ -9,7 +9,7 @@ import ProductSize from './ProductSize';
 import ProductColor from './ProductColor';
 import CartPanel from '../cart/CartPanel';
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
-import StickySubHeader from './StickySubheader';
+import StickySubHeader from './StickySubheader.jsx';
 import ProductFrame from './ProductFrame';
 
 function ProductDetail() {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography, CardMedia, Paper, useTheme, Button } from '@mui/material';
 
-const StickySubHeader = ({ product, quantity, selectedColor, selectedSize, handleAddCart }) => {
+const StickySubHeader = ({ product, handleAddCart }) => {
     const theme = useTheme();
 
     return (
