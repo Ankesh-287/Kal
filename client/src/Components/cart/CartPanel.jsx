@@ -13,9 +13,7 @@ function CartPanel() {
         if (!Array.isArray(storedCart)) {
             localStorage.setItem("cart", JSON.stringify([]));
             return;
-        }
-
-        
+        }  
         setCartItems(storedCart);
     }, []);
 

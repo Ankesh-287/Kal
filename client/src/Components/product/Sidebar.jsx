@@ -125,7 +125,7 @@ const SidebarWithProducts = () => {
 
         <Grid container spacing={3} sx={{ px: 2 }}>
           {products.map((product) => (
-            <Grid item key={product._id} xs={6} sm={4} md={3} lg={2} onClick={() => handleProductClick(product._id)}>
+            <Grid item key={product._id} xs={6} sm={6} md={4} lg={3} xl={2} onClick={() => handleProductClick(product._id)}>
               <Card>
                 <CardMedia component="img" height="300" image={product.image} alt={product.name} />
               </Card>
