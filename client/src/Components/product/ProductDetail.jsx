@@ -169,15 +169,15 @@ function ProductDetail() {
 
                 </Grid>
                 <Divider sx={{ my: 4 }} />
-                {showSticky && (
-                    // <StickySubHeader
-                    //     product={product}
-                    //     // quantity={quantity}
-                    //     // selectedColor={selectedColor}
-                    //     // selectedSize={selectedSize}
-                    //     handleAddCart={handleAddCart}
-                    // />
-                )}
+                {/* {showSticky && (
+                    <StickySubHeader
+                        product={product}
+                        // quantity={quantity}
+                        // selectedColor={selectedColor}
+                        // selectedSize={selectedSize}
+                        handleAddCart={handleAddCart}
+                    />
+                )} */}
                 <SuggetionProducts />
                 {showCart && <CartPanel />}
             </Box>
