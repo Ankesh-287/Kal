@@ -78,3 +78,5 @@ function CartList2({ cartItems, updateQuantity, removeItem }) {
     </>
   );
 }
+
+export default CartList2;
