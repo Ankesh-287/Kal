@@ -9,7 +9,7 @@ export const fetchProduct = createAsyncThunk('product/fetchProduct', async (id) 
 
 export const fetchSubcategoryProducts = createAsyncThunk('product/fetchSubcategoryProducts', async (subcategory) => {
     const res = await API.get(`/products/subcategory/${subcategory}`);
-    return{ products: res.data};
+    return { products: res.data };
 })
 
 export const fetchAllProducts = createAsyncThunk(
@@ -60,8 +60,8 @@ const productSlice = createSlice({
                 state.loading = true;
             })
             .addCase(fetchAllProducts.fulfilled, (state, action) => {
-                state.products = action.payload.products;
-                state.total = action.payload.total;
+                state.products = Array.isArray(action.payload.products) ? action.payload.products : [];
+                state.total = action.payload.total || 0;
                 state.loading = false;
             })
             .addCase(fetchAllProducts.rejected, (state, action) => {
@@ -73,8 +73,8 @@ const productSlice = createSlice({
             })
             .addCase(fetchFilteredProducts.fulfilled, (state, action) => {
                 state.loading = false;
-                state.products = action.payload.data;
-                state.total = action.payload.total;
+                state.products = Array.isArray(action.payload.data) ? action.payload.data : [];
+                state.total = action.payload.total || 0;
             })
             .addCase(fetchFilteredProducts.rejected, (state, action) => {
                 state.loading = false;
@@ -85,8 +85,8 @@ const productSlice = createSlice({
                 state.product = action.payload.data;
             })
             .addCase(fetchSubcategoryProducts.fulfilled, (state, action) => {
-                state.subcategoryProducts = action.payload.products;
-            });
+                state.subcategoryProducts = Array.isArray(action.payload.products) ? action.payload.products : [];
+            })
     },
 });
 
