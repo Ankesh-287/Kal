@@ -8,7 +8,7 @@ import { fetchFilteredProducts } from '../redux/slices/productSlice';
 import { useNavigate, useParams } from 'react-router-dom';
 import ProductCategory from '../Components/product/ProductCategory';
 import ProductMobileFilter from '../Components/product/ProductMobileFilter';
-import ProductFilterMenu from '../Components/product/PRoductFilterMenu';
+import ProductFilterMenu from '../Components/product/ProductFilterMenu';
 import ProductCard from '../Components/product/ProductCard';
 
 const ProductPage = () => {
