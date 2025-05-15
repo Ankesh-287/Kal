@@ -75,7 +75,6 @@ const userSlice = createSlice({
         state.currentUser = action.payload;
         state.isAuthenticated = true;
         localStorage.setItem('user', JSON.stringify(action.payload.user));
-        localStorage.setItem('token', action.payload.token);
       })
       .addCase(logoutUser.fulfilled, (state) => {
         state.currentUser = null;
