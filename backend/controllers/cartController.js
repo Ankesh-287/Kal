@@ -25,7 +25,7 @@ export const addToCart = async (req, res) => {
   }
 
   await cart.save();
-  res.json(cart);
+  res.json({ items: cart.items });
 };
 
 

@@ -29,7 +29,10 @@ const cartSlice = createSlice({
     builder
       .addCase(fetchCart.pending, state => { state.loading = true })
       .addCase(fetchCart.fulfilled, (state, action) => {
-        state.items = action.payload.items;
+        state.items = action.payload.items.map(item => ({
+          ...item,
+          productId: item.productId || item._id
+        }));
         state.loading = false;
       })
       .addCase(addToCart.fulfilled, (state, action) => {
