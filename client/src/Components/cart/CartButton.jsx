@@ -29,7 +29,7 @@ function CartButton() {
     }, []);
 
     return (
-        <IconButton onClick={() => navigate("/cart")} >
+        <IconButton aria-label="open cart" onClick={() => navigate("/cart")} >
             <Badge badgeContent={cartCount} color="secondary" >
                 <ShoppingCart />
             </Badge>

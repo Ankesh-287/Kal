@@ -41,11 +41,11 @@ const ProductListAdmin = () => {
             {products.map((product, index) => (
               <React.Fragment key={product._id}>
                 <TableRow >
-                  <TableCell>{index +1}</TableCell>
+                  <TableCell>{index + 1}</TableCell>
                   <TableCell>
-                    <img src={product.image} alt={product.name} width={50} />
+                    <img src={product?.image} alt={product.name} width={50} />
                   </TableCell>
-                  <TableCell>{product.name}</TableCell>
+                  <TableCell>{product?.name}</TableCell>
                   {/* <TableCell>{product.desc}</TableCell> */}
                   <TableCell>{product.colors?.join(', ')}</TableCell>
                   <TableCell>{product.size?.join(', ')}</TableCell>

@@ -44,8 +44,7 @@ function CartList2({ cartItems, updateQuantity, removeItem }) {
                 px: 1
               }}
             >
-              <IconButton disableTouchRipple="true" size='small'
-              disableFocusRipple="true" sx={{width:10, height:10, pr:2}}
+              <IconButton disableTouchRipple="true" size='small' sx={{width:10, height:10, pr:2}}
                 onClick={() => {
                   if (item.quantity > 1) {
                     updateQuantity(item.id, item.color, item.size, -1);
