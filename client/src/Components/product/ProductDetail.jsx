@@ -26,55 +26,58 @@ function ProductDetail() {
 
     const handleIncrease = () => setQuantity(quantity + 1);
     const handleDecrease = () => quantity > 1 && setQuantity(quantity - 1);
-    
+
     const hasCartItems = () => {
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    return cart.length > 0;
-};
+        const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+        return cart.length > 0;
+    };
 
     const handleAddCart = () => {
-    if (!selectedColor || !selectedSize) {
-    alert("Please select color and size");
-    return;
-  }
+        cartItem.productId = cartItem.productId.toString();
 
-  const cartItem = {
-    productId: product._id,
-    name: product.name,
-    price: product.price,
-    image: product.image,
-    color: selectedColor,
-    size: selectedSize,
-    quantity,
-  };
+        if (!selectedColor || !selectedSize) {
+            alert("Please select color and size");
+            return;
+        }
 
-  setAddingToCart(true);
-  if (currentUser) {
-    dispatch(addToCart(cartItem)).then(() => {
-      setAddingToCart(false);
-      setShowCart(true);
-    });
-  } else {
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    const index = cart.findIndex(
-      item =>
-        item.productId === cartItem.productId &&
-        item.color === cartItem.color &&
-        item.size === cartItem.size
-    );
-    if (index !== -1) {
-      cart[index].quantity += cartItem.quantity;
-    } else {
-      cart.push(cartItem);
-    }
-    localStorage.setItem("cart", JSON.stringify(cart));
-    window.dispatchEvent(new Event("storage"));
-    setTimeout(() => {
-      setAddingToCart(false);
-      setShowCart(true);
-    }, 800);
-  }
-};
+        const cartItem = {
+            productId: product._id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            color: selectedColor,
+            size: selectedSize,
+            quantity,
+        };
+
+        setAddingToCart(true);
+        if (currentUser) {
+            dispatch(addToCart(cartItem)).then(() => {
+                setAddingToCart(false);
+                setShowCart(true);
+            });
+        } else {
+            const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+            const index = cart.findIndex(
+                item =>
+                    item.productId.toString() === cartItem.productId.toString() &&
+                    item.color === cartItem.color &&
+                    item.size === cartItem.size
+
+            );
+            if (index !== -1) {
+                cart[index].quantity += cartItem.quantity;
+            } else {
+                cart.push(cartItem);
+            }
+            localStorage.setItem("cart", JSON.stringify(cart));
+            window.dispatchEvent(new Event("storage"));
+            setTimeout(() => {
+                setAddingToCart(false);
+                setShowCart(true);
+            }, 800);
+        }
+    };
 
 
     useEffect(() => {
@@ -163,7 +166,7 @@ function ProductDetail() {
                             <ArrowBackIos onClick={goToPrevProduct} sx={{ cursor: 'pointer', border: '1px solid', p: '5px' }} />
                             <ArrowForwardIos onClick={goToNextProduct} sx={{ cursor: 'pointer', border: '1px solid', p: '5px' }} />
                         </Box> */}
-                        
+
                     </Grid>
 
                     <Divider sx={{ my: 4 }} />
