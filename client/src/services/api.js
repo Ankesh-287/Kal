@@ -9,3 +9,5 @@ export const removeFromCart = (id) => API.delete(`/cart/remove/${id}`);
 export const updateCategory = (data) => API.put("/cart/update", data);
 
 export default API;
+
+//update
