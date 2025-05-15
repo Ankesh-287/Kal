@@ -1,7 +1,7 @@
 import { Box, Card, CardMedia, Grid, IconButton, Rating, Typography } from '@mui/material'
-import React from 'react'
 
 const ProductCard = ({products, handleProductClick}) => {
+    if (!Array.isArray(products)) return null;
     return (
         <>
             {products.map((product) => (
