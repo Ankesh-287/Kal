@@ -1,48 +1,44 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios';
 import API from '../../api/axios.js'
 
+// Fetch product by ID
 export const fetchProduct = createAsyncThunk('product/fetchProduct', async (id) => {
     const res = await API.get(`/products/${id}`);
     return res.data;
-})
+});
 
+// Fetch products by subcategory
 export const fetchSubcategoryProducts = createAsyncThunk('product/fetchSubcategoryProducts', async (subcategory) => {
     const res = await API.get(`/products/subcategory/${subcategory}`);
     return { products: res.data };
-})
+});
 
-export const fetchAllProducts = createAsyncThunk(
-    'product/fetchAllProducts',
-    async () => {
-        const res = await API.get('/products');
-        return { products: res.data.data };
-    }
-);
+// Fetch all products
+export const fetchAllProducts = createAsyncThunk('product/fetchAllProducts', async () => {
+    const res = await API.get('/products');
+    return { products: res.data.data, total: res.data.total };
+});
 
-export const fetchFilteredProducts = createAsyncThunk(
-    'product/fetchFilteredProducts',
-    async (filters) => {
-        const { category, subCategory, sort } = filters;
+// Fetch products with filters (category, subcategory, sort)
+export const fetchFilteredProducts = createAsyncThunk('product/fetchFilteredProducts', async (filters) => {
+    const { category, subCategory, sort } = filters;
 
-        const cleanedFilters = Object.fromEntries(
-            Object.entries({ category, subCategory, sort }).filter(([_, v]) => v != null)
-        );
+    const cleanedFilters = Object.fromEntries(
+        Object.entries({ category, subCategory, sort }).filter(([_, v]) => v != null)
+    );
 
-        const query = new URLSearchParams(cleanedFilters).toString();
-        const res = await axios.get(`/api/products?${query}`);
-        return res.data;
-    }
-);
+    const query = new URLSearchParams(cleanedFilters).toString();
+    const res = await API.get(`/products?${query}`);
+    return res.data;
+});
 
-export const updateProduct = createAsyncThunk(
-    'product/updateProduct',
-    async ({ id, updates }) => {
-        const res = await API.put(`/products/${id}`, updates);
-        return res.data;
-    }
-);
+// Update product by ID
+export const updateProduct = createAsyncThunk('product/updateProduct', async ({ id, updates }) => {
+    const res = await API.put(`/products/${id}`, updates);
+    return res.data;
+});
 
+// Product slice
 const productSlice = createSlice({
     name: 'product',
     initialState: {
@@ -56,6 +52,7 @@ const productSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
+            // All Products
             .addCase(fetchAllProducts.pending, (state) => {
                 state.loading = true;
             })
@@ -68,27 +65,32 @@ const productSlice = createSlice({
                 state.loading = false;
                 state.error = action.error.message;
             })
+
+            // Filtered Products
             .addCase(fetchFilteredProducts.pending, (state) => {
                 state.loading = true;
             })
             .addCase(fetchFilteredProducts.fulfilled, (state, action) => {
-                state.loading = false;
                 state.products = Array.isArray(action.payload.data) ? action.payload.data : [];
                 state.total = action.payload.total || 0;
+                state.loading = false;
             })
             .addCase(fetchFilteredProducts.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message;
             })
+
+            // Single Product
             .addCase(fetchProduct.fulfilled, (state, action) => {
                 state.loading = false;
                 state.product = action.payload.data;
             })
+
+            // Subcategory Products
             .addCase(fetchSubcategoryProducts.fulfilled, (state, action) => {
                 state.subcategoryProducts = Array.isArray(action.payload.products) ? action.payload.products : [];
-                state.total = action.payload.products?.length || 0; 
+                state.total = action.payload.products?.length || 0;
             });
-
     },
 });
 
