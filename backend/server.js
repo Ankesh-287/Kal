@@ -1,12 +1,12 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import dotenv from 'dotenv';
+import express from 'express';
 import connectDB from './config/db.js';
-import productRoutes from './routes/productRoutes.js';
-import cartRoutes from './routes/cartRoutes.js';
-import categoryRoutes from './routes/categoriesRoutes.js';
+import cookieParser from 'cookie-parser';
 import userRoutes from './routes/userRoutes.js';
+import cartRoutes from './routes/cartRoutes.js';
+import productRoutes from './routes/productRoutes.js';
+import categoryRoutes from './routes/categoriesRoutes.js';
 
 dotenv.config();
 connectDB();
