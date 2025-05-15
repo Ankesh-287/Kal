@@ -3,7 +3,7 @@ import { useTheme } from "@mui/material/styles";
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutUser } from "../../redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
-import { AppBar, Toolbar, Typography, Box, IconButton, Menu, MenuItem } from "@mui/material";
+import { AppBar, Toolbar, Typography, Box, IconButton, Menu, MenuItem, Avatar } from "@mui/material";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
 import { ThemeContext } from "../../ThemeContext";
 import SearchBar from "./SearchBar";
@@ -54,17 +54,20 @@ const Navbar = () => {
             <SearchBar />
             <CartButton />
             <Box>
-              <IconButton onClick={toggleTheme} color="inherit">
+              <IconButton aria-label="toggle dark mode" onClick={toggleTheme} color="inherit">
                 {mode === "dark" ? <Brightness7 /> : <Brightness4 />}
               </IconButton>
             </Box>
 
-            <Typography
-              sx={{ cursor: 'pointer' }}
-              onClick={user ? handleClick : () => navigate('/login')}
-            >
-              {user ? `Hi, ${user.firstname}` : 'Login'}
-            </Typography>
+            <IconButton onClick={user ? handleClick : () => navigate('/login')}>
+              {user ? (
+                <Avatar sx={{ width: 32, height: 32 }}>
+                  {user.firstname?.[0].toUpperCase()}
+                </Avatar>
+              ) : (
+                <Typography variant="body2" sx={{ fontWeight: 500 }}>Login</Typography>
+              )}
+            </IconButton>
 
             {user && (
               <Menu

@@ -3,7 +3,9 @@ import Product from '../models/ProductModel.js';
 
 export const fetchAllProducts = async (req, res) => {
     try {
-        const { category, subCategory, sort } = req.query;
+        const { category, subCategory, page = 1, limit = 8, sort } = req.query;
+        const skip = (page - 1) * limit;
+
         const filter = {};
 
         if (category) filter.category = category;
@@ -17,8 +19,13 @@ export const fetchAllProducts = async (req, res) => {
         if (sort === 'rating') query = query.sort({ rating: -1 });
         if (sort === 'latest') query = query.sort({ createdAt: -1 });
 
+        query = query.skip(Number(skip)).limit(Number(limit));
+
+        const total = await Product.countDocuments(filter);
+
         const products = await query.exec();
-        res.status(200).json({ success: true, data: products });
+
+        res.status(200).json({ success: true, data: products, total });
 
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
@@ -54,6 +61,15 @@ export const fetchProduct = async (req, res) => {
         res.json({ success: true, data: product });
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
+    }
+};
+
+export const getProductsBySubcategory = async (req, res) => {
+    try {
+        const products = await Product.find({ subCategory: req.params.subcategory });
+        res.json(products);
+    } catch (err) {
+        res.status(500).json({ error: "Something went wrong" });
     }
 };
 

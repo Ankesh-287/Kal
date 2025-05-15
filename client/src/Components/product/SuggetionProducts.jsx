@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Card, CardMedia, Grid, Typography } from '@mui/material';
 import { ShoppingBasket, VisibilityOutlined } from '@mui/icons-material';
 import productsData from '../../data/data';

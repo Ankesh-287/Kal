@@ -22,6 +22,7 @@ function ProductDetail() {
     const [showCart, setShowCart] = useState(false);
     const [addingToCart, setAddingToCart] = useState(false);
     const { product, loading, error } = useSelector((state) => state.product);
+    const { currentUser } = useSelector((state) => state.user);
 
     const handleIncrease = () => setQuantity(quantity + 1);
     const handleDecrease = () => quantity > 1 && setQuantity(quantity - 1);
@@ -32,42 +33,49 @@ function ProductDetail() {
 };
 
     const handleAddCart = () => {
-        
-        if (!selectedColor || !selectedSize) {
-            alert("Please select color and size");
-            return;
-        }
+    if (!selectedColor || !selectedSize) {
+    alert("Please select color and size");
+    return;
+  }
 
-        setAddingToCart(true);
+  const cartItem = {
+    productId: product._id,
+    name: product.name,
+    price: product.price,
+    image: product.image,
+    color: selectedColor,
+    size: selectedSize,
+    quantity,
+  };
 
-        const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+  setAddingToCart(true);
+  if (currentUser) {
+    dispatch(addToCart(cartItem)).then(() => {
+      setAddingToCart(false);
+      setShowCart(true);
+    });
+  } else {
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const index = cart.findIndex(
+      item =>
+        item.productId === cartItem.productId &&
+        item.color === cartItem.color &&
+        item.size === cartItem.size
+    );
+    if (index !== -1) {
+      cart[index].quantity += cartItem.quantity;
+    } else {
+      cart.push(cartItem);
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+    window.dispatchEvent(new Event("storage"));
+    setTimeout(() => {
+      setAddingToCart(false);
+      setShowCart(true);
+    }, 800);
+  }
+};
 
-        const existingItemIndex = cartItems.findIndex((item) =>
-            item.id === product.id && item.color === selectedColor && item.size === selectedSize
-        );
-
-        if (existingItemIndex !== -1) {
-            cartItems[existingItemIndex].quantity += quantity;
-        } else {
-            cartItems.push({
-                id: product?._id,
-                name: product?.name,
-                price: product?.price,
-                image: product?.image,
-                color: selectedColor,
-                size: selectedSize,
-                quantity: quantity,
-            });
-        }
-
-        localStorage.setItem("cart", JSON.stringify(cartItems));
-        window.dispatchEvent(new Event("storage"));
-
-        setTimeout(() => {
-            setAddingToCart(false);
-            setShowCart(true);
-        }, 800);
-    };
 
     useEffect(() => {
         dispatch(fetchProduct(id));

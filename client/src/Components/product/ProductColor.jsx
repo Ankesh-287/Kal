@@ -4,7 +4,7 @@ import React from 'react';
 function ProductColor({ colors = [], setSelectedColor, selectedColor }) {
     return (
         <>
-            <Grid container spacing={2} sx={{ mt: 1, pl: '8px' }}>
+            <Grid container spacing={2} sx={{ mt: 1,  }}>
                 {colors.length > 0 ? (
                     colors.map((color, index) => (
                         <Grid item key={index}>

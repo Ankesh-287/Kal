@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import './App.css'
 import ThemeProviderComponent from "./ThemeContext";
 import Homepage from './pages/Homepage';
 import Navbar from './Components/home/Navbar'
@@ -10,9 +11,7 @@ import Register from './pages/Register.jsx';
 import Cart from './pages/Cart.jsx';
 import ProductDetail from "./Components/product/ProductDetail.jsx";
 import ProductPage from "./pages/ProductPage.jsx";
-import './App.css'
 import CheckOut from "./Components/cart/CheckOut.jsx";
-import Structure from "./Components/product/Structure.jsx";
 import NewProducts from "./Components/product/NewProducts.jsx";
 import Footer from "./Components/home/Footer.jsx";
 import ProtectedRoutes from './Components/ProtectedRoutes.jsx'
@@ -43,14 +42,14 @@ const App = () => {
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/products" element={<ProductPage />} />
+          <Route path="/products/:category" element={<ProductPage />} />
+          <Route path="/products/:category/:subCategory" element={<ProductPage />} />
           <Route path="/admin" element={<ProductListAdmin />} />
           <Route path="/checkout" element={
             <ProtectedRoutes>
               <CheckOut />
             </ProtectedRoutes>
-            } />
-          <Route path="/str" element={<Structure />} />
+          } />
           <Route path="/page" element={<NewProducts />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
