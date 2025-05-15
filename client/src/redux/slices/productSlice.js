@@ -86,7 +86,9 @@ const productSlice = createSlice({
             })
             .addCase(fetchSubcategoryProducts.fulfilled, (state, action) => {
                 state.subcategoryProducts = Array.isArray(action.payload.products) ? action.payload.products : [];
-            })
+                state.total = action.payload.products?.length || 0; 
+            });
+
     },
 });
 
