@@ -1,3 +1,6 @@
+import { Box, CardMedia, Grid, IconButton, Typography } from '@mui/material';
+import { Add, Remove, CancelOutlined, DeleteOutlineOutlined, } from '@mui/icons-material';
+
 function CartList2({ cartItems, updateQuantity, removeItem }) {
   const percent = 34;
 
@@ -78,5 +81,6 @@ function CartList2({ cartItems, updateQuantity, removeItem }) {
     </>
   );
 }
+
 
 export default CartList2;
