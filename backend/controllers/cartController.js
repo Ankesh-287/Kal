@@ -13,7 +13,7 @@ export const addToCart = async (req, res) => {
 
   const existingItem = cart.items.find(
     item =>
-      item.product.toString() === productId &&
+      item.product.toString() === productId.toString() &&
       item.color === color &&
       item.size === size
   );
@@ -27,6 +27,7 @@ export const addToCart = async (req, res) => {
   await cart.save();
   res.json(cart);
 };
+
 
 export const updateCartItem = async (req, res) => {
   const { itemId, quantity } = req.body;
