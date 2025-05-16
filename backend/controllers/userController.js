@@ -28,12 +28,14 @@ export const registerUser = async (req, res) => {
       email,
       password: hashed,
     });
+    
+    const token = createToken(newUser._id);
 
     res.cookie('token', token, {
-      httpOnly: true,       
-      secure: process.env.NODE_ENV === 'production',  
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
       sameSite: process.env.NODE_ENV === 'production' ? 'strict' : 'lax',
-      maxAge: 7 * 24 * 60 * 60 * 1000,  
+      maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
     res.json({

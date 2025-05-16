@@ -2,7 +2,15 @@ import Cart from '../models/CartModel.js';
 
 export const getCart = async (req, res) => {
   const cart = await Cart.findOne({ user: req.user._id });
-  res.json(cart || { items: [] });
+
+  if (!cart) return res.json({ items: [] });
+
+  const updatedItems = cart.items.map(item => ({
+    ...item.toObject(),
+    productId: item.productId.toString(),
+  }));
+
+  res.json({ ...cart.toObject(), items: updatedItems });
 };
 
 export const addToCart = async (req, res) => {
@@ -13,7 +21,9 @@ export const addToCart = async (req, res) => {
 
   const existingItem = cart.items.find(
     item =>
-      item.product.toString() === productId.toString() &&
+      item.productId.toString() === productId.toString() &&
+      item.name === name &&
+      item.price === price &&
       item.color === color &&
       item.size === size
   );
@@ -21,7 +31,7 @@ export const addToCart = async (req, res) => {
   if (existingItem) {
     existingItem.quantity += quantity;
   } else {
-    cart.items.push({ product: productId, name, price, image, color, size, quantity });
+    cart.items.push({ productId, name, price, image, color, size, quantity });
   }
 
   await cart.save();
