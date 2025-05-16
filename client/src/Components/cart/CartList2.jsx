@@ -9,7 +9,7 @@ function CartList2({ cartItems, updateQuantity, removeItem }) {
       {cartItems.map((item, index) => (
         <Grid
           container
-          key={`${item.productId}-${item.color}-${item.size}-${index}`}
+          key={`${item.productId}-${item.name}-${item.price}-${item.color}-${item.size}-${index}`}
           sx={{ border: '1px solid grey', mb: 2, p: 1, position: 'relative' }}
         >
           <Grid item xs={4} sm={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

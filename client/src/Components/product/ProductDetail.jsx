@@ -33,7 +33,7 @@ function ProductDetail() {
     };
 
     const handleAddCart = () => {
-        cartItem.productId = cartItem.productId.toString();
+        // cartItem.productId = cartItem.productId.toString();
 
         if (!selectedColor || !selectedSize) {
             alert("Please select color and size");
@@ -61,6 +61,8 @@ function ProductDetail() {
             const index = cart.findIndex(
                 item =>
                     item.productId.toString() === cartItem.productId.toString() &&
+                    item.name === cartItem.name &&
+                    item.price === cartItem.price &&
                     item.color === cartItem.color &&
                     item.size === cartItem.size
 

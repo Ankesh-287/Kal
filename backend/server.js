@@ -13,12 +13,13 @@ connectDB();
 
 const app = express();
 
-app.use(cors({
-  origin: ['http://localhost:5173', process.env.CLIENT_URL],   
-  credentials: true,                 
+const corsOptions ={
+  origin: ['http://localhost:5173', 'https://kal-lilac.vercel.app'],
+  credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'], 
   allowedHeaders: ['Content-Type', 'Authorization'],
-}));
+}
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(cookieParser());
