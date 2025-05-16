@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
+import { addToCart } from '../../redux/slices/cartSlice';
 import { fetchProduct } from '../../redux/slices/productSlice';
 import { Box, Divider, Grid, Typography, CircularProgress, Backdrop } from '@mui/material';
 import ProductFrame from './ProductFrame';
