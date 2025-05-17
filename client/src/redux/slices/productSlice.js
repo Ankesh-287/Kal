@@ -8,7 +8,10 @@ export const fetchProduct = createAsyncThunk('product/fetchProduct', async (id) 
 
 export const fetchSubcategoryProducts = createAsyncThunk('product/fetchSubcategoryProducts', async (subcategory) => {
     const res = await API.get(`/products/subcategory/${subcategory}`);
-    return { products: res.data };
+   return {
+    products: res.data.products || res.data.data || [],
+    total: res.data.total || 0
+};
 });
 
 export const fetchAllProducts = createAsyncThunk('product/fetchAllProducts', async () => {
@@ -75,7 +78,7 @@ const productSlice = createSlice({
 
             .addCase(fetchProduct.fulfilled, (state, action) => {
                 state.loading = false;
-                state.product = action.payload?.data;
+                state.product = action.payload?.data || null;
             })
 
             .addCase(fetchSubcategoryProducts.fulfilled, (state, action) => {
