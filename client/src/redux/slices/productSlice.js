@@ -1,25 +1,21 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import API from '../../api/axios.js'
 
-// Fetch product by ID
 export const fetchProduct = createAsyncThunk('product/fetchProduct', async (id) => {
     const res = await API.get(`/products/${id}`);
     return res.data;
 });
 
-// Fetch products by subcategory
 export const fetchSubcategoryProducts = createAsyncThunk('product/fetchSubcategoryProducts', async (subcategory) => {
     const res = await API.get(`/products/subcategory/${subcategory}`);
     return { products: res.data };
 });
 
-// Fetch all products
 export const fetchAllProducts = createAsyncThunk('product/fetchAllProducts', async () => {
     const res = await API.get('/products');
     return { products: res.data.data, total: res.data.total };
 });
 
-// Fetch products with filters (category, subcategory, sort)
 export const fetchFilteredProducts = createAsyncThunk('product/fetchFilteredProducts', async (filters) => {
     const { category, subCategory, sort } = filters;
 
@@ -32,7 +28,6 @@ export const fetchFilteredProducts = createAsyncThunk('product/fetchFilteredProd
     return res.data;
 });
 
-// Update product by ID
 export const updateProduct = createAsyncThunk('product/updateProduct', async ({ id, updates }) => {
     const res = await API.put(`/products/${id}`, updates);
     return res.data;
@@ -52,7 +47,6 @@ const productSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            // All Products
             .addCase(fetchAllProducts.pending, (state) => {
                 state.loading = true;
             })
@@ -66,7 +60,6 @@ const productSlice = createSlice({
                 state.error = action.error.message;
             })
 
-            // Filtered Products
             .addCase(fetchFilteredProducts.pending, (state) => {
                 state.loading = true;
             })
@@ -80,13 +73,11 @@ const productSlice = createSlice({
                 state.error = action.error.message;
             })
 
-            // Single Product
             .addCase(fetchProduct.fulfilled, (state, action) => {
                 state.loading = false;
-                state.product = action.payload.data;
+                state.product = action.payload?.data;
             })
 
-            // Subcategory Products
             .addCase(fetchSubcategoryProducts.fulfilled, (state, action) => {
                 state.subcategoryProducts = Array.isArray(action.payload.products) ? action.payload.products : [];
                 state.total = action.payload.products?.length || 0;
