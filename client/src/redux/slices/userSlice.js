@@ -23,7 +23,6 @@ export const logoutUser = createAsyncThunk('users/logout', async () => {
   await API.post('/users/logout')
 });
 
-
 export const fetchUser = createAsyncThunk('users/fetchUser', async (_, { rejectWithValue }) => {
   try {
     const res = await API.get('/users/profile', { withCredentials: true });
@@ -32,7 +31,6 @@ export const fetchUser = createAsyncThunk('users/fetchUser', async (_, { rejectW
     return rejectWithValue(null);
   }
 });
-
 
 
 const userSlice = createSlice({

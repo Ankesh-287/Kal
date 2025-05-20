@@ -14,7 +14,7 @@ connectDB();
 const app = express();
 
 const corsOptions ={
-  origin:  'https://kal-lilac.vercel.app',
+  origin: process.env.CLIENT_URL,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'], 
   allowedHeaders: ['Content-Type', 'Authorization'],

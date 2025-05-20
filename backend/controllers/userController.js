@@ -3,9 +3,9 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { validationResult } from 'express-validator';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9';
+const JWT_SECRET = process.env.JWT_SECRET;
 
-const createToken = (userId) => jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: '7d' });
+const createToken = (userId) => jwt.sign({ id: userId }, JWT_SECRET, { expiresIn: '7d' });
 
 export const registerUser = async (req, res) => {
   const errors = validationResult(req);
@@ -84,6 +84,6 @@ export const logoutUser = (req, res) => {
 }
 
 export const getUserProfile = (req, res) => {
-  const user = req.user;
+  const user = req.data.user;
   res.json({ user });
 };
