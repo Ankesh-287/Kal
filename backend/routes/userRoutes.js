@@ -10,7 +10,8 @@ router.post(
     [
       body('firstname').trim().notEmpty().withMessage('First name is required'),
       body('lastname').trim().notEmpty().withMessage('Last name is required'),
-      body('phone').trim().notEmpty().withMessage('Phone is required'),
+      body('phone').trim().notEmpty()
+      .isLength({ min: 10 }).withMessage('Phone is required'),
       body('email').trim().isEmail().withMessage('Valid email is required'),
       body('password')
         .isLength({ min: 8 })
