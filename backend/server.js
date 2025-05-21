@@ -14,7 +14,7 @@ connectDB();
 const app = express();
 
 const corsOptions ={
-  origin: process.env.CLIENT_URL,
+  origin: ['http://localhost:5173', 'https://kal-lilac.vercel.app'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'], 
   allowedHeaders: ['Content-Type', 'Authorization'],
@@ -23,6 +23,10 @@ app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(cookieParser());
+
+app.get('/ping', (req, res) => {
+  res.send('pong');
+});
 
 app.use('/api/products', productRoutes);
 app.use('/api/categories', categoryRoutes);

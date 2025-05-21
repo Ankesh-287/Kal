@@ -24,6 +24,7 @@ export const fetchAllProducts = async (req, res) => {
         const total = await Product.countDocuments(filter);
 
         const products = await query.exec();
+        console.log('Products route hit')
 
         res.status(200).json({ success: true, data: products, total });
 

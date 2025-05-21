@@ -1,6 +1,5 @@
 import Category from "../models/CategoryModel.js";
 
-// Get all categories
 export const getAllCategories = async (req, res) => {
   try {
     const categories = await Category.find();
@@ -10,7 +9,6 @@ export const getAllCategories = async (req, res) => {
   }
 };
 
-// Add new category
 export const createCategory = async (req, res) => {
   try {
     const { name, subCategories } = req.body;
