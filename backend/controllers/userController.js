@@ -1,3 +1,4 @@
+import { registerSchema, loginSchema } from '../utils/validationSchema.js';
 import User from '../models/UserModel.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
@@ -70,7 +71,7 @@ export const loginUser = async (req, res) => {
     const token = createToken(user._id);
 
     res.cookie('token', token, {
-      HttpOnly: true,
+      httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
       maxAge: 7 * 24 * 60 * 1000,
