@@ -7,6 +7,7 @@ import userRoutes from './routes/userRoutes.js';
 import cartRoutes from './routes/cartRoutes.js';
 import productRoutes from './routes/productRoutes.js';
 import categoryRoutes from './routes/categoriesRoutes.js';
+import errorHandler from './middleware/errorMiddleware.js';
 
 dotenv.config();
 connectDB();
@@ -14,7 +15,7 @@ connectDB();
 const app = express();
 
 const corsOptions ={
-  origin: ['http://localhost:5173', 'https://kal-lilac.vercel.app'],
+  origin: process.env.CLIENT_URL,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'], 
   allowedHeaders: ['Content-Type', 'Authorization'],
@@ -23,6 +24,7 @@ app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(errorHandler);
 
 app.get('/ping', (req, res) => {
   res.send('pong');

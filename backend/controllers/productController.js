@@ -1,5 +1,5 @@
 import Product from '../models/ProductModel.js';
-
+import asyncHandler from '../utils/asyncHandler.js';
 
 export const fetchAllProducts = async (req, res) => {
     try {
@@ -24,7 +24,6 @@ export const fetchAllProducts = async (req, res) => {
         const total = await Product.countDocuments(filter);
 
         const products = await query.exec();
-        console.log('Products route hit')
 
         res.status(200).json({ success: true, data: products, total });
 
@@ -55,7 +54,7 @@ export const updateProduct = async (req, res) => {
     res.json(updated);
 };
 
-export const fetchProduct = async (req, res) => {
+export const fetchProduct = asyncHandler (async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
         if (!product) return res.status(404).json({ success: false, message: 'Product not found' });
@@ -63,7 +62,7 @@ export const fetchProduct = async (req, res) => {
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
     }
-};
+});
 
 export const getProductsBySubcategory = async (req, res) => {
     try {
