@@ -1,6 +1,6 @@
 import { registerSchema, loginSchema } from '../utils/validationSchema.js';
 import User from '../models/UserModel.js';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 const JWT_SECRET = process.env.JWT_SECRET;
