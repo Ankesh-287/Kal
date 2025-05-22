@@ -23,10 +23,6 @@ export const registerUser = async (req, res) => {
     const userExists = await User.findOne({ email });
     if (userExists) return res.status(400).json({ message: 'User already exists' });
 
-    if (!bcrypt) {
-      throw new Error('bcrypt is not defined or failed to import');
-    }
-
     const hashed = await bcrypt.hash(password, 10);
     const newUser = await User.create({
       firstname,
