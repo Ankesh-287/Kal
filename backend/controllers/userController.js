@@ -1,20 +1,22 @@
 import User from '../models/UserModel.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { validationResult } from 'express-validator';
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
 const createToken = (userId) => jwt.sign({ id: userId }, JWT_SECRET, { expiresIn: '7d' });
 
 export const registerUser = async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
+  const { error } = registerSchema.validate(req.body, { abortEarly: false });
+
+if (error) {
+  return res.status(400).json({
+    message: 'Validation error',
+    errors: error.details.map(err => err.message),
+  });
+}
 
   const { firstname, lastname, phone, email, password, cpassword } = req.body;
-  if (!firstname || !lastname || !phone || !email || !password || password !== cpassword) return res.status(400).json({ message: 'Validation error' });
 
   try {
     const userExists = await User.findOne({ email });
@@ -28,7 +30,7 @@ export const registerUser = async (req, res) => {
       email,
       password: hashed,
     });
-    
+
     const token = createToken(newUser._id);
 
     res.cookie('token', token, {
@@ -53,6 +55,9 @@ export const registerUser = async (req, res) => {
 };
 
 export const loginUser = async (req, res) => {
+  const { error } = loginSchema.validate(req.body);
+  if (error) return res.status(400).json({ message: error.details[0].message });
+
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
