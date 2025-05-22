@@ -10,18 +10,22 @@ const createToken = (userId) => jwt.sign({ id: userId }, JWT_SECRET, { expiresIn
 export const registerUser = async (req, res) => {
   const { error } = registerSchema.validate(req.body, { abortEarly: false });
 
-if (error) {
-  return res.status(400).json({
-    message: 'Validation error',
-    errors: error.details.map(err => err.message),
-  });
-}
+  if (error) {
+    return res.status(400).json({
+      message: 'Validation error',
+      errors: error.details.map(err => err.message),
+    });
+  }
 
   const { firstname, lastname, phone, email, password, cpassword } = req.body;
 
   try {
     const userExists = await User.findOne({ email });
     if (userExists) return res.status(400).json({ message: 'User already exists' });
+
+    if (!bcrypt) {
+      throw new Error('bcrypt is not defined or failed to import');
+    }
 
     const hashed = await bcrypt.hash(password, 10);
     const newUser = await User.create({
