@@ -1,9 +1,16 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import { registerSchema, loginSchema } from '../utils/validationSchema.js';
 import User from '../models/UserModel.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 const JWT_SECRET = process.env.JWT_SECRET;
+
+if (!JWT_SECRET) {
+  throw new Error('JWT_SECRET is not defined in environment variables.');
+}
 
 const createToken = (userId) => jwt.sign({ id: userId }, JWT_SECRET, { expiresIn: '7d' });
 
@@ -17,13 +24,14 @@ export const registerUser = async (req, res) => {
     });
   }
 
-  const { firstname, lastname, phone, email, password, cpassword } = req.body;
+  const { firstname, lastname, phone, email, password } = req.body;
 
   try {
     const userExists = await User.findOne({ email });
     if (userExists) return res.status(400).json({ message: 'User already exists' });
 
     const hashed = await bcrypt.hash(password, 10);
+
     const newUser = await User.create({
       firstname,
       lastname,
@@ -74,10 +82,16 @@ export const loginUser = async (req, res) => {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
-      maxAge: 7 * 24 * 60 * 1000,
+      maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
-    res.json({ user: { id: user._id, firstname: user.firstname, email: user.email } });
+    res.json({
+      user: {
+        id: user._id,
+        firstname: user.firstname,
+        email: user.email
+      }
+    });
 
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -85,11 +99,16 @@ export const loginUser = async (req, res) => {
 };
 
 export const logoutUser = (req, res) => {
-  res.clearCookie('token', { httpOnly: true, sameSite: 'strict', secure: process.env.NODE_ENV === 'production' });
+  res.clearCookie('token', {
+    httpOnly: true,
+    sameSite: 'strict',
+    secure: process.env.NODE_ENV === 'production'
+  });
   res.json({ message: 'Logged out' });
-}
+};
 
 export const getUserProfile = (req, res) => {
-  const user = req.data.user;
+  const user = req.data?.user;
+  if (!user) return res.status(401).json({ message: 'Unauthorized' });
   res.json({ user });
 };
