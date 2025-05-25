@@ -5,8 +5,8 @@ export const fetchAllCategories = createAsyncThunk(
   'category/fetchAll',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await API.get('/categories');
-      return data;
+      const response = await API.get('/categories');
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data.message || error.message);
     }
@@ -14,7 +14,7 @@ export const fetchAllCategories = createAsyncThunk(
 );
 
 const categorySlice = createSlice({
-  name: 'category',
+  name: 'categories',
   initialState: {
     categories: [],
     loading: false,

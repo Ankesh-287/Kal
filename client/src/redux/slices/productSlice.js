@@ -8,35 +8,41 @@ export const fetchProduct = createAsyncThunk('product/fetchProduct', async (id) 
 
 export const fetchSubcategoryProducts = createAsyncThunk('product/fetchSubcategoryProducts', async (subcategory) => {
     const res = await API.get(`/products/subcategory/${subcategory}`);
-   return {
-    products: res.data.products || res.data.data || [],
-    total: res.data.total || 0
-};
+    return {
+        products: res.data.products || res.data.data || [],
+        total: res.data.total || 0
+    };
 });
 
 export const fetchAllProducts = createAsyncThunk('product/fetchAllProducts', async () => {
     const res = await API.get('/products');
-    return { products: res.data.data, total: res.data.total };
+    console.log(res.data.data)
+    return { 
+        products: res.data.data, 
+        total: res.data.total 
+    };
 });
 
 export const fetchFilteredProducts = createAsyncThunk('product/fetchFilteredProducts', async (filters) => {
-    const { category, subCategory, sort } = filters;
+    const { category, subCategory, sort, page = 1, limit = 12  } = filters;
 
     const cleanedFilters = Object.fromEntries(
-        Object.entries({ category, subCategory, sort }).filter(([_, v]) => v != null)
+        Object.entries({ category, subCategory, sort, page, limit  }).filter(([_, v]) => v != null)
     );
 
     const query = new URLSearchParams(cleanedFilters).toString();
+    console.log("🧾 Sending filtered product request with query:", query);
+
     const res = await API.get(`/products?${query}`);
     return res.data;
 });
+
 
 export const updateProduct = createAsyncThunk('product/updateProduct', async ({ id, updates }) => {
     const res = await API.put(`/products/${id}`, updates);
     return res.data;
 });
 
-// Product slice
 const productSlice = createSlice({
     name: 'product',
     initialState: {
@@ -66,11 +72,13 @@ const productSlice = createSlice({
             .addCase(fetchFilteredProducts.pending, (state) => {
                 state.loading = true;
             })
+            
             .addCase(fetchFilteredProducts.fulfilled, (state, action) => {
                 state.products = Array.isArray(action.payload.data) ? action.payload.data : [];
                 state.total = action.payload.total || 0;
                 state.loading = false;
             })
+            
             .addCase(fetchFilteredProducts.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message;

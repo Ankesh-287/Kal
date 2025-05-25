@@ -16,48 +16,64 @@ const ProductPage = () => {
     const dispatch = useDispatch();
     const { category, subCategory } = useParams();
     const { products, total, loading } = useSelector((state) => state.product);
-    const { categories, selectedCategory, selectedSubCategory } = useSelector((state) => state.category);
+    const { categories, selectedCategory, selectedSubCategory } = useSelector((state) => state.categories);
 
     const [sortOption, setSortOption] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [openCategory, setOpenCategory] = useState(null);
     const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
+    const totalPages = Math.max(1, Math.ceil(total / 12));
+
     useEffect(() => {
-        if (category) dispatch(setSelectedCategory(category));
-        if (subCategory) dispatch(setSelectedSubCategory(subCategory));
+        if (category !== undefined) dispatch(setSelectedCategory(category));
+        if (subCategory !== undefined) dispatch(setSelectedSubCategory(subCategory));
+
         dispatch(fetchAllCategories());
     }, [category, subCategory, dispatch]);
 
-    useEffect(() => { window.scrollTo(0, 0);  }, [currentPage]);
+    useEffect(() => { window.scrollTo(0, 0); }, [currentPage]);
+    useEffect(() => { setCurrentPage(1) }, [selectedCategory, selectedSubCategory]);
+
 
     useEffect(() => {
-        if (selectedCategory) {
-            const filters = { category: selectedCategory, page: currentPage, limit: 12, };
-            if (selectedSubCategory) filters.subCategory = selectedSubCategory;
+        if (selectedCategory && categories.length > 0) {
+            const filters = {
+                category: selectedCategory,
+                page: currentPage,
+                limit: 12,
+            };
+            if (selectedSubCategory && selectedSubCategory !== 'undefined') {
+                filters.subCategory = selectedSubCategory;
+            }
             if (sortOption) filters.sort = sortOption;
+
             dispatch(fetchFilteredProducts(filters));
         }
-    }, [selectedCategory, selectedSubCategory, sortOption, currentPage, dispatch]);
+    }, [selectedCategory, selectedSubCategory, sortOption, currentPage, categories, dispatch]);
 
-    const handleCategoryClick = (categoryName) => {
-        setOpenCategory((prev) => (prev === categoryName ? null : categoryName));
-        dispatch(setSelectedCategory(categoryName));
+
+    useEffect(() => { window.scrollTo(0, 0); }, [currentPage, selectedCategory, selectedSubCategory, sortOption]);
+
+    const handleCategoryClick = (categoryObj) => {
+        setOpenCategory((prev) => (prev === categoryObj.name ? null : categoryObj.name));
+        dispatch(setSelectedCategory(categoryObj.name));
         dispatch(setSelectedSubCategory(null));
         setCurrentPage(1);
-        navigate(`/products/${categoryName}`);
+        navigate(`/products/${categoryObj.name}`);
     };
 
-    const handleSubCategoryClick = (sub) => {
-        dispatch(setSelectedSubCategory(sub));
+    const handleSubCategoryClick = (categoryObj, subCategoryObj) => {
+        dispatch(setSelectedCategory(categoryObj.name));
+        dispatch(setSelectedSubCategory(subCategoryObj.name));
         setCurrentPage(1);
-        navigate(`/products/${selectedCategory}/${sub}`);
+        navigate(`/products/${categoryObj.name}/${subCategoryObj.name}`);
     };
 
     const handleProductClick = (id) => navigate(`/product/${id}`);
 
     const FilterSidebar = (
-        <ProductCategory categories={categories} openCategory={openCategory} handleCategoryClick={handleCategoryClick} handleSubCategoryClick={handleSubCategoryClick} />
+        <ProductCategory categories={categories} openCategory={openCategory} handleCategoryClick={handleCategoryClick} handleSubCategoryClick={handleSubCategoryClick} selectedSubCategory={selectedSubCategory} />
     );
 
     return (
@@ -67,13 +83,19 @@ const ProductPage = () => {
 
             <Grid item xs={12} sm={9} md={9} lg={10}>
                 <ProductFilterMenu sortOption={sortOption} setSortOption={setSortOption} />
-                
+
 
                 <Grid item xs={12} lg={12} sx={{ px: 2, py: 3 }}>
                     <Breadcrumbs separator={<NavigateNext fontSize="small" />} aria-label="breadcrumb">
                         <Link underline="hover" color="inherit" href="/">Home</Link>
-                        {selectedCategory && <Link underline="hover" color="inherit" href={`/products/${selectedCategory}`}>{selectedCategory}</Link>}
-                        {selectedSubCategory && <Typography>{selectedSubCategory}</Typography>}
+                        {selectedCategory && (
+                            <Link underline="hover" color="inherit" href={`/products/${selectedCategory}`}>
+                                {selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)}
+                            </Link>
+                        )}
+                        {selectedSubCategory && (
+                            <Typography>{selectedSubCategory.charAt(0).toUpperCase() + selectedSubCategory.slice(1)}</Typography>
+                        )}
                     </Breadcrumbs>
                 </Grid>
 
@@ -81,17 +103,19 @@ const ProductPage = () => {
                     <Box sx={{ textAlign: 'center', py: 5 }}><CircularProgress /></Box>
                 ) : (
                     <>
-                        <Grid container spacing={3} sx={{ px: 2 }}>
+                        <Grid container spacing={3} sx={{ p: 2 }}>
                             <ProductCard products={products} handleProductClick={handleProductClick} />
                         </Grid>
-                        <Grid container justifyContent="center" mt={3}>
-                            <Pagination
-                                count={Math.ceil(total / 12)}
-                                page={currentPage}
-                                onChange={(e, value) => setCurrentPage(value)}
-                                color="primary"
-                            />
-                        </Grid>
+                        {!loading && products.length > 0 && total > 12 && (
+                            <Grid container justifyContent="center" mt={3}>
+                                <Pagination
+                                    count={Math.ceil(total / 12)}
+                                    page={currentPage}
+                                    onChange={(e, value) => setCurrentPage(value)}
+                                    color="primary"
+                                />
+                            </Grid>
+                        )}
                     </>
                 )}
             </Grid>
