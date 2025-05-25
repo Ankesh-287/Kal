@@ -12,7 +12,7 @@ const store = configureStore({
         // order: orderReducer,
         
         user: userReducer,
-        category: categoryReducer
+        categories: categoryReducer
     }
 })
 
