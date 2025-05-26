@@ -56,7 +56,7 @@ function Ads() {
                 alignItems: 'center',
                 position: 'relative',
                 overflow: 'hidden',
-                backgroundImage: `url("https://frenchcrown.in/cdn/shop/articles/Fashion_Style_Tips_Every_Man_Should_Know.jpg?v=1715837777&width=2048")`,
+                backgroundImage: `url("https://www.hatkay.com/cdn/shop/articles/How-to-Give-Indian-Clothes-a-Modern-Touch.jpg?v=1670497709")`,
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
