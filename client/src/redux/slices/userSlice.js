@@ -25,7 +25,7 @@ export const logoutUser = createAsyncThunk('users/logout', async () => {
 
 export const fetchUser = createAsyncThunk('users/fetchUser', async (_, { rejectWithValue }) => {
   try {
-    const res = await API.get('/users/profile', { withCredentials: true });
+    const res = await API.get('/users/me', { withCredentials: true });
     return res.data.user;
   } catch (error) {
     return rejectWithValue(null);
@@ -39,11 +39,11 @@ const userSlice = createSlice({
     currentUser: null,
     loading: false,
     error: null,
+    isAuthenticated: false,
   },
   reducers: {
     logout: (state) => {
       state.currentUser = null;
-      localStorage.removeItem('user');
     },
     setUser: (state, action) => {
       state.currentUser = action.payload;
@@ -72,7 +72,6 @@ const userSlice = createSlice({
         state.loading = false;
         state.currentUser = action.payload;
         state.isAuthenticated = true;
-        localStorage.setItem('user', JSON.stringify(action.payload.user));
       })
       .addCase(logoutUser.fulfilled, (state) => {
         state.currentUser = null;

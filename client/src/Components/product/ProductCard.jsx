@@ -5,10 +5,9 @@ const ProductCard = ({ products, handleProductClick }) => {
     return (
         <>
             {products.map((product) => (
-                <Grid item key={product._id} xs={6} sm={6} md={4} lg={3} xl={2} onClick={() => handleProductClick(product._id)}>
+                <Grid item key={product._id} xs={6} sm={6} md={4} lg={2} xl={2} onClick={() => handleProductClick(product._id)}>
                     <Card>
                         <CardMedia component="img" height="300" image={product.image} alt={product.name} />
-
                         <Typography variant='body2'>{product.category}</Typography>
                         <Typography variant='h6'>{product.name}</Typography>
                         <Typography variant='body2' sx={{ display: '-webkit-box', WebkitBoxOrient: 'vertical', WebkitLineClamp: 2, overflow: 'hidden' }}>{product.desc}</Typography>
