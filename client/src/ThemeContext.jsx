@@ -41,7 +41,7 @@ const ThemeProviderComponent = ({ children }) => {
         },
         typography: {
           fontFamily: "Poppins, sans-serif",
-          h1: { fontSize: { xs: '30px', sm: '38px', md: '40px', lg: '44px', fontWeight: "600=" } },
+          h1: { fontSize: { xs: '30px', sm: '38px', md: '40px', lg: '44px', fontWeight: 600 } },
           h2: { fontSize: "2.5rem", fontWeight: "bold" },
           body1: { fontSize: {xs:"0.8rem", sm:"1.1rem"} },
           button: { textTransform: "none", fontWeight: "bold" },
