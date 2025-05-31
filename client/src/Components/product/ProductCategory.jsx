@@ -24,7 +24,7 @@ const ProductCategory = ({ categories = [], openCategory, handleCategoryClick, h
                             <ListItemIcon>
                                 <Inbox />
                             </ListItemIcon>
-                            <ListItemText primary={`${cat.name.charAt(0).toUpperCase() + cat.name.slice(1)} ${index}`} />
+                            <ListItemText primary={`${cat.name.charAt(0).toUpperCase() + cat.name.slice(1)}`} />
                             {openCategory === cat.name ? <ExpandLess /> : <ExpandMore />}
                         </ListItemButton>
                     </ListItem>
