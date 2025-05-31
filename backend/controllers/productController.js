@@ -2,7 +2,7 @@ import Product from '../models/ProductModel.js';
 import asyncHandler from '../utils/asyncHandler.js';
 
 export const fetchAllProducts = asyncHandler(async (req, res) => {
-    const { category, subCategory, page = 1, limit = 20, sort } = req.query;
+    const { category, subCategory, page = 1, limit = 10, sort } = req.query;
     const skip = (parseInt(page) - 1) * parseInt(limit);
 
     const filter = {};

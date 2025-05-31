@@ -60,42 +60,54 @@ function Ads() {
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
-                backgroundAttachment: isLargeScreen ? 'fixed' : 'scroll', 
-                px: 2
-            }}
-        >
-            <Box
-                sx={{
-                    borderRadius: '12px',
-                    maxWidth: '600px',
+                backgroundAttachment: isLargeScreen ? 'fixed' : 'scroll',
+                px: 2,
+                '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
                     width: '100%',
-                    textAlign: 'center',
-                    p: 4,
-                }}
-            >
-                <Heading1 title="New Collection" />
-                <Typography variant='h1' sx={{ fontWeight:'600', my: 2 }}>
-                    Be different in your own way!
-                </Typography>
-                <Typography variant='h6' sx={{ fontWeight:'600', mb: 3 }}>
-                    Find your unique style.
-                </Typography>
-                <Button
+                    height: '100%',
+                    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+                    zIndex: 1,
+                }
+                }
+            }
+                >
+                <Box
                     sx={{
-                        border: 'none',
-                        px: 4,
-                        py: 1,
-                        borderRadius: 0,
-                        textTransform: 'capitalize',
-                        backgroundColor: theme.palette.background.button,
-                        color: theme.palette.background.buttonColor,
+                        borderRadius: '12px',
+                        maxWidth: '600px',
+                        width: '100%',
+                        textAlign: 'center',
+                        p: 4,
+                        zIndex: 1,
                     }}
                 >
-                    Shop Collection
-                </Button>
-            </Box>
-        </Box>
-    );
+                    <Heading1 title="New Collection" sx={{ color:'white'}}/>
+                    <Typography variant='h1' sx={{ fontWeight: '600', my: 2, color:'white'}}>
+                        Be different in your own way!
+                    </Typography>
+                    <Typography variant='h6' sx={{ fontWeight: '600', mb: 3, color:'white' }}>
+                        Find your unique style.
+                    </Typography>
+                    <Button
+                        sx={{
+                            border: 'none',
+                            px: 4,
+                            py: 1,
+                            borderRadius: 0,
+                            textTransform: 'capitalize',
+                            backgroundColor: theme.palette.background.button,
+                            color: theme.palette.background.buttonColor,
+                        }}
+                    >
+                        Shop Collection
+                    </Button>
+                </Box>
+        </ Box>
+            );
 }
 
-export default Ads;
+            export default Ads;
