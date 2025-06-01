@@ -102,7 +102,7 @@ export const logoutUser = (req, res) => {
 };
 
 export const getUserProfile = (req, res) => {
-  const user = req.data?.user;
+  const user = req.user;
   if (!user) return res.status(401).json({ message: 'Unauthorized' });
   res.json({ user });
 };
