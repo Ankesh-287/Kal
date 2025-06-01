@@ -12,6 +12,7 @@ import ExpandBars from '../ExpandBars';
 import SuggetionProducts from './SuggetionProducts';
 import CartPanel from '../cart/CartPanel';
 import ProductText from './ProductText';
+import { fetchUser } from '../../redux/slices/userSlice';
 
 function ProductDetail() {
     const { id } = useParams();
@@ -82,6 +83,9 @@ function ProductDetail() {
         }
     };
 
+    useEffect(() => {
+        dispatch(fetchUser());
+    }, [dispatch])
 
     useEffect(() => {
         dispatch(fetchProduct(id));
@@ -119,7 +123,12 @@ function ProductDetail() {
                 <Grid container justifyContent="center" spacing={4}>
 
 
-                    <ProductFrame image={product?.image} name={product?.name} productImageRef={productImageRef} />
+                    <ProductFrame
+                        image={product?.image}
+                        images={product?.images}
+                        name={product?.name}
+                        productImageRef={productImageRef}
+                    />
 
                     <Grid item xs={12} md={6}>
 

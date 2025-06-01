@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const cartItemSchema = new mongoose.Schema({
-  productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
+  productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true, unique: true, },
   name: String,
   image: String,
   price: Number,
@@ -19,7 +19,7 @@ cartItemSchema.set('toJSON', {
 });
 
 const cartSchema = new mongoose.Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true, unique: true },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true,},
   items: [cartItemSchema],
 });
 

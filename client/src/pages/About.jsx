@@ -89,14 +89,14 @@ const AboutPage = () => {
         <Grid container spacing={4} sx={{ boxSizing: 'border-box', alignItems: 'stretch' }}>
           <Grid item xs={12} md={6}>
             <Box sx={{ backgroundColor: '#fbeeee', p: { xs: 4, md: 10 }, height: '100%' }}>
-              <Typography variant="h5" fontWeight="600" gutterBottom sx={{mb:2}}>
+              <Typography variant="h5" fontWeight="600" gutterBottom sx={{ color:'grey.900', mb:2}}>
                 Our Mission: Design Quality Products For Efficient Travel 
               </Typography>
-              <Typography variant="body1" fontWeight="500" gutterBottom sx={{mb:2}}>
+              <Typography variant="body1" fontWeight="500" gutterBottom sx={{ color:'grey.700', mb:2}}>
                 Proin eu ante vel mauris molestie dignissim non eget nunc. Integer ac massa orci.
                 Suspendisse vulputate semper nunc eget rhoncus.
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" color="text.secondary" sx={{color:'grey.600',}}>
                 We're Will and Felix, co-founders of Arcido and we now live our lives on the road. We're continually moving from place to place, and using our products as we go. We've graduated from the basic gear that we started. Now we design and use high quality backpacks that solve the pain points of travel. Our mission is simple: to make the best gear that keeps us moving efficiently between cities. 
               </Typography>
             </Box>
