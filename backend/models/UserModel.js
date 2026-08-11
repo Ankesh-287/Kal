@@ -8,10 +8,10 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true, lowercase: true },
   password: { type: String, required: true },
   isAdmin: { type: Boolean, default: false },
-  cart: [{
-    productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
-    quantity: {type: Number, default: 1},
-  }],
+  // cart: [{
+  //   productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
+  //   quantity: {type: Number, default: 1},
+  // }],
   wishlist: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
 
 }, { timestamps: true }

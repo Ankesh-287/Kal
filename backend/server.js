@@ -10,7 +10,6 @@ import categoryRoutes from './routes/categoriesRoutes.js';
 import errorHandler from './middleware/errorMiddleware.js';
 
 dotenv.config();
-console.log('JWT_SECRET:', process.env.JWT_SECRET);
 connectDB();
 
 const app = express();

@@ -1,9 +1,8 @@
 import Cart from '../models/CartModel.js';
 
 export const getCart = async (req, res) => {
-  console.log('GET CART for user:', req.user._id);
 
-  const cart = await Cart.findOne({ user: req.user._id });
+  const cart = await Cart.findOne({ user: req.user._id }).lean();
   if (!cart) {
     console.log('No cart found. Returning empty items array.');
     return res.json({ items: [] });
@@ -20,11 +19,9 @@ export const getCart = async (req, res) => {
 
 export const addToCart = async (req, res) => {
   const { productId, name, price, image, color, size, quantity } = req.body;
-  console.log('ADD TO CART - Request Body:', req.body);
 
   let cart = await Cart.findOne({ user: req.user._id });
   if (!cart) {
-    console.log('No existing cart. Creating a new one.');
     cart = new Cart({ user: req.user._id, items: [] });
   }
 
