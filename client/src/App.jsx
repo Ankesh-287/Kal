@@ -47,9 +47,9 @@ const App = () => {
             <Route path="/product/:id" element={ <ProtectedRoutes> <ProductDetail /> </ProtectedRoutes> } />
             
             <Route path="/cart" element={ <ProtectedRoutes> <Cart /> </ProtectedRoutes> } />
-            <Route path="/bill" element={ <ProtectedRoutes> <Bill /> </ProtectedRoutes> } />
+            {/* <Route path="/bill" element={ <ProtectedRoutes> <Bill /> </ProtectedRoutes> } /> */}
             
-            <Route path="/checkout" element={ <ProtectedRoutes> <CheckOut /> </ProtectedRoutes>  } />
+            {/* <Route path="/checkout" element={ <ProtectedRoutes> <CheckOut /> </ProtectedRoutes>  } /> */}
             
             <Route path="/product-category/:category" element={ <ProtectedRoutes> <Category /> </ProtectedRoutes> } />
             

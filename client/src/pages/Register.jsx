@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../redux/slices/userSlice';
-import { Container, TextField, Button, Box, Typography, Paper } from '@mui/material';
+import { Container, TextField, Button, Box, Typography, Paper,  } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '@mui/material/styles';
 
 const Register = () => {
   const [form, setForm] = useState({ firstname: '', lastname: '', phone: '', email: '', password: '', cpassword: '' });
   const dispatch = useDispatch();
   const navigate = useNavigate();
+const theme = useTheme
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -115,7 +117,7 @@ const Register = () => {
             Register
           </Button>
 
-          <Typography variant="body1" color="initial" sx={{ p: 4 }}> Already have an account ?<span onClick={() => navigate('/login')}> login here </span> </Typography>
+          <Typography variant="body1" sx={{ p: 4}}> Already have an account ?<span onClick={() => navigate('/login')}> login here </span> </Typography>
         </Box>
       </Paper>
     </Container>

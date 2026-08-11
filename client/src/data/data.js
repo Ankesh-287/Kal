@@ -19,7 +19,7 @@ const productsData = {
   women: {
     shirts: [
       { id: 401, type: 'Women', name: 'Women T-Shirt', price: 25, image: 'https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-08-a-400x488.jpg', desc: 'Soft and stretchable T-shirt for comfort.', colors: ['pink', 'red', 'white'], size: ['S', 'M', 'L'] },
-      { id: 402, type: 'Women', name: 'Women Formal Shirt', price: 130, image: 'https://foreverformals.in/cdn/shop/files/SS23SQARABELL_WHT_1.jpg?v=1696584908', desc: 'Elegant shirt for office wear.', colors: ['white', 'blue', 'gray'], size: ['S', 'M', 'L', 'XL'] },
+      { id: 402, type: 'Women', name: 'Women Formal Shirt', price: 130, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHaSIXA0J7WvkkM8mdAVwL546_iXAv_u0v58yhwuirnQ&s', desc: 'Elegant shirt for office wear.', colors: ['white', 'blue', 'gray'], size: ['S', 'M', 'L', 'XL'] },
     ],
     pants: [
       { id: 501, type: 'Women', name: 'Women Jeans', price: 45, image: 'https://d1pdzcnm6xgxlz.cloudfront.net/bottoms/8905875192664-9.jpg', desc: 'Slim fit stretchable jeans.', colors: ['blue', 'black', 'white'], size: ['S', 'M', 'L', 'XL'] },

@@ -54,6 +54,7 @@ function NavItems() {
                                 fontSize: '0.8rem',
                                 textTransform: 'uppercase',
                                 textDecoration: 'none',
+                                
                             }}
                         >
                             {item.link}
