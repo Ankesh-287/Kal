@@ -73,12 +73,28 @@ const userSlice = createSlice({
         state.currentUser = action.payload;
         state.isAuthenticated = true;
       })
+      .addCase(loginUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+        state.currentUser = null;
+        state.isAuthenticated = false;
+      })
       .addCase(logoutUser.fulfilled, (state) => {
         state.currentUser = null;
         state.isAuthenticated = false;
       })
+      .addCase(fetchUser.pending, (state) => {
+        state.loading = true;
+      })
       .addCase(fetchUser.fulfilled, (state, action) => {
+        state.loading = false;
         state.currentUser = action.payload;
+        state.isAuthenticated = true;
+      })
+      .addCase(fetchUser.rejected, (state) => {
+        state.loading = false;
+        state.currentUser = null;
+        state.isAuthenticated = false;
       });
   }
 });

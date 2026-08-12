@@ -22,6 +22,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchUser } from './redux/slices/userSlice';
 import ProductListAdmin from "./Components/product/ProductListAdmin.jsx";
+import Profile from "./pages/Profile.jsx";
 
 
 const App = () => {
@@ -62,6 +63,8 @@ const App = () => {
             <Route path="/admin" element={ <ProtectedRoutes> <ProductListAdmin /> </ProtectedRoutes> } />
             
             <Route path="/page" element={ <ProtectedRoutes>  <NewProducts /> </ProtectedRoutes> } />
+            
+            <Route path="/profile" element={ <ProtectedRoutes>  <Profile /> </ProtectedRoutes> } />
 
         </Routes>
         <Footer />
